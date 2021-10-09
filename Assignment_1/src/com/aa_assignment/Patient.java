@@ -7,5 +7,6 @@ public class Patient {
     Integer unqID;
     Vaccine vax;
     Integer doses_done;
+    Integer day_of_first;
 
 }

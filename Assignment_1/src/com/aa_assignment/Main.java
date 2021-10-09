@@ -9,13 +9,11 @@ public class Main {
     public static void main(String[] args) throws IOException{
 
         //Database starts here
-        ArrayList<Patient> patient_list = new ArrayList<>();
-        ArrayList<Integer> patient_ids = new ArrayList<>();
+        HashMap<Integer, Patient> patient_list = new HashMap<>();
         HashMap<String, Hospital> hospital_name = new HashMap<>();
-        ArrayList<Integer> hospital_pin = new ArrayList<>();
+        HashMap<Integer, Hospital> hospital_pin = new HashMap<>();
         ArrayList<Integer> hospital_ids = new ArrayList<>();
-        ArrayList<Vaccine> vaccine_list = new ArrayList<>();
-        ArrayList<String> vaccine_name = new ArrayList<>();
+        HashMap<String, Vaccine> vaccines_list = new HashMap<>();
         //Database ends here
 
         BufferedReader scn = new BufferedReader(new InputStreamReader(System.in));
@@ -25,7 +23,7 @@ public class Main {
 
         while (true){
             System.out.println("Menu Options: ");
-            System.out.println("---------------------------------------------");
+            System.out.println();
             System.out.println("1. Add Vaccine");
             System.out.println("2. Register Hospital");
             System.out.println("3. Register Citizen");
@@ -36,7 +34,41 @@ public class Main {
             System.out.println("8. Exit");
             System.out.println("---------------------------------------------");
 
+            //input
             Integer inp = Integer.parseInt(scn.readLine());
+
+            //main if else working
+            if (inp==8){
+                System.out.println("Thank You for using CoVin Platform");
+                System.out.println("---------------------------------------------");
+                break;
+            }
+
+            else if (inp==1){
+                String nn;
+                Integer gp;
+                Integer ds;
+                System.out.print("Vaccine Name: ");
+                nn = scn.readLine();
+                System.out.print("Number of Doses: ");
+                ds = Integer.parseInt(scn.readLine());
+                if (ds==1){
+                    gp = 1;
+                }
+                else{
+                    System.out.print("Gap between Doses: ");
+                    gp = Integer.parseInt(scn.readLine());
+                }
+
+                Vaccine vax = new Vaccine();
+                vax.name = nn;
+                vax.no_of_doses = ds;
+                vax.gap_dose = gp;
+
+                vaccines_list.put(nn, vax);
+            }
+
+
 
             //break;
         }
