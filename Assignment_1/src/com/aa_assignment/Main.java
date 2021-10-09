@@ -124,8 +124,7 @@ public class Main {
                 System.out.println("Citizen Name: " + pnt.getName() + ", Age: " + pnt.getAge() + ", Unique ID: " + pnt.getUnqID());
                 System.out.println("---------------------------------------------");
                 System.out.println();
-
-
+                
             }
 
 
