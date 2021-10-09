@@ -9,4 +9,15 @@ public class Patient {
     Integer doses_done;
     Integer day_of_first;
 
+    public String getName(){
+        return name;
+    }
+
+    public Integer getAge(){
+        return age;
+    }
+
+    public Integer getUnqID() {
+        return unqID;
+    }
 }

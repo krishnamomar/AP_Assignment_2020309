@@ -17,4 +17,16 @@ public class Hospital {
         day_number.add(day);
     }
 
+    public String getName(){
+        return Name;
+    }
+
+    public Integer getPin(){
+        return PinCode;
+    }
+
+    public Integer getID(){
+        return Hosp_iD;
+    }
+
 }

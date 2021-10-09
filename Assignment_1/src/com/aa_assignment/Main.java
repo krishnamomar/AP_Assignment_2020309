@@ -10,10 +10,10 @@ public class Main {
 
         //Database starts here
         HashMap<Integer, Patient> patient_list = new HashMap<>();
-        HashMap<String, Hospital> hospital_name = new HashMap<>();
         HashMap<Integer, Hospital> hospital_pin = new HashMap<>();
-        ArrayList<Integer> hospital_ids = new ArrayList<>();
+        HashMap<Integer, Hospital> hospital_ids = new HashMap<>();
         HashMap<String, Vaccine> vaccines_list = new HashMap<>();
+        Integer create_ids = 100000;
         //Database ends here
 
         BufferedReader scn = new BufferedReader(new InputStreamReader(System.in));
@@ -53,7 +53,7 @@ public class Main {
                 System.out.print("Number of Doses: ");
                 ds = Integer.parseInt(scn.readLine());
                 if (ds==1){
-                    gp = 1;
+                    gp = 0;
                 }
                 else{
                     System.out.print("Gap between Doses: ");
@@ -66,7 +66,69 @@ public class Main {
                 vax.gap_dose = gp;
 
                 vaccines_list.put(nn, vax);
+
+                System.out.println("Vaccine Name: " + vax.getName() + ", Number of Doses: " + vax.getNoDoses() + ", Gap Between Doses: " + vax.getDoseGap());
+                System.out.println("---------------------------------------------");
+                System.out.println();
             }
+
+            else if (inp==2){
+                String nn;
+                Integer pn;
+                System.out.print("Hospital Name: ");
+                nn = scn.readLine();
+                System.out.print("PinCode: ");
+                pn = Integer.parseInt(scn.readLine());
+
+                Hospital hspt = new Hospital();
+                hspt.Name = nn;
+                hspt.PinCode = pn;
+                hspt.Hosp_iD = create_ids;
+
+                hospital_pin.put(pn, hspt);
+                hospital_ids.put(create_ids, hspt);
+
+                create_ids +=1;
+
+                System.out.println("Hospital Name: " + hspt.getName() + ", PinCode: " + hspt.getPin() + ", Unique ID: " + hspt.getID());
+                System.out.println("---------------------------------------------");
+                System.out.println();
+            }
+
+            else if (inp==3){
+                String nn;
+                Integer ag;
+                Integer ui;
+                System.out.print("Citizen Name: ");
+                nn = scn.readLine();
+                System.out.print("Age: ");
+                ag = Integer.parseInt(scn.readLine());
+                System.out.print("Unique ID: ");
+                ui = Integer.parseInt(scn.readLine());
+
+                if (ag<18){
+                    System.out.println("Citizen Name: " + nn + ", Age: " + ag + ", Unique ID: " + ui);
+                    System.out.println("Only above 18 are allowed");
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+                }
+
+                Patient pnt = new Patient();
+                pnt.name = nn;
+                pnt.age = ag;
+                pnt.unqID = ui;
+
+                patient_list.put(ui, pnt);
+
+                System.out.println("Citizen Name: " + pnt.getName() + ", Age: " + pnt.getAge() + ", Unique ID: " + pnt.getUnqID());
+                System.out.println("---------------------------------------------");
+                System.out.println();
+
+
+            }
+
+
 
 
 
