@@ -17,19 +17,4 @@ public class Hospital {
         day_number.add(day);
     }
 
-    public void remove_slot(Integer ind){
-        Integer mm = v_available.get(ind);
-        if (mm==1){
-            all_vaccine.remove(ind);
-            v_available.remove(ind);
-            day_number.remove(ind);
-            return;
-        }
-        else{
-            v_available.set(ind, mm-1);
-            return;
-        }
-
-    }
-
 }
