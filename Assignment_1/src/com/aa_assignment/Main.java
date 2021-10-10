@@ -369,6 +369,47 @@ public class Main {
                 System.out.println();
             }
 
+            else if (inp==7){
+                System.out.print("Enter Patient ID: ");
+                Long pit = Long.parseLong(scn.readLine());
+
+                if (patient_list.containsKey(pit)==false){
+                    System.out.println("Citizen NOT-REGISTERED");
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+                }
+
+                Patient pntx = patient_list.get(pit);
+
+                if (pntx.getvaccine()==null){
+                    System.out.println("Citizen REGISTERED");
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+                }
+
+                Vaccine pnt_vax = pntx.getvaccine();
+
+                if (pnt_vax.getNoDoses() > pntx.getDoses_done()){
+                    System.out.println("PARTIALLY VACCINATED");
+                    System.out.println("Vaccine Given: " + pnt_vax.getName());
+                    System.out.println("Number of Doses given: " + pntx.getDoses_done());
+                    Integer ztmp = pnt_vax.getDoseGap() + pntx.getDay_of_first();
+                    System.out.println("Next Dose due date: " + ztmp);
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                }
+
+                else{
+                    System.out.println("FULLY VACCINATED");
+                    System.out.println("Vaccine Given: " + pnt_vax.getName());
+                    System.out.println("Number of Doses given: " + pntx.getDoses_done());
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                }
+            }
+
 
 
 
