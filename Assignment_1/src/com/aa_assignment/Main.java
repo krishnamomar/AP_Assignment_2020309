@@ -163,10 +163,23 @@ public class Main {
 
                 }
 
+                System.out.println("---------------------------------------------");
+                System.out.println();
+
             }
 
             else if (inp==5) {
+                Long pid;
+                System.out.print("Enter patient Unique ID: ");
+                pid = Long.parseLong(scn.readLine());
 
+                if (patient_list.containsKey(pid)==false){
+                    System.out.println("Citizen not Registered");
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+                }
+                
             }
 
 
