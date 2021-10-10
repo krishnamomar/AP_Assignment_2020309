@@ -20,4 +20,18 @@ public class Patient {
     public Long getUnqID() {
         return unqID;
     }
+
+    public Vaccine getvaccine(){
+        return vax;
+    }
+
+    public Integer getDoses_done(){
+        return doses_done;
+    }
+
+    public Integer getDay_of_first(){
+        return  day_of_first;
+    }
+
+
 }

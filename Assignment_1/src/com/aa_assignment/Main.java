@@ -132,12 +132,41 @@ public class Main {
                 System.out.print("Enter Hospital ID: ");
                 hsid = Integer.parseInt(scn.readLine());
 
-                if (hsid<=create_ids){
+                if (hsid >= create_ids){
                     System.out.println("Sorry, Hospital Not Found!");
                     System.out.println("---------------------------------------------");
                     System.out.println();
                     continue;
                 }
+
+                Hospital hspt = hospital_ids.get(hsid);
+                System.out.print("Enter number of Slots to be added: ");
+                Integer slt = Integer.parseInt(scn.readLine());
+
+                for (int slotss=0; slotss<slt; slotss++) {
+                    System.out.print("Enter Day Number: ");
+                    Integer dy = Integer.parseInt(scn.readLine());
+                    System.out.print("Enter Quantity: ");
+                    Integer qn = Integer.parseInt(scn.readLine());
+                    HashMap<Integer, Vaccine> tmp_vax = new HashMap<>();
+                    System.out.println("Select Vaccine");
+                    int i = 0;
+                    for (String xn : vaccines_list.keySet()) {
+                        System.out.println(i + ". " + xn);
+                        tmp_vax.put(i, vaccines_list.get(xn));
+                        i++;
+                    }
+                    Integer vxnumber = Integer.parseInt(scn.readLine());
+
+                    hspt.add_slot(tmp_vax.get(vxnumber), qn, dy);
+                    System.out.println("Slot added by Hospital " + hspt.getID() + " for Day: " + dy + ", Available Quantity: " + qn + " of Vaccine " + (tmp_vax.get(vxnumber)).getName());
+
+                }
+
+            }
+
+            else if (inp==5) {
+
             }
 
 
