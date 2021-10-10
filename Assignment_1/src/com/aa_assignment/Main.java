@@ -345,7 +345,7 @@ public class Main {
             }
 
             else if (inp==6) {
-                System.out.println("Enter Hospital ID: ");
+                System.out.print("Enter Hospital ID: ");
                 Integer hsid = Integer.parseInt(scn.readLine());
 
                 if (hospital_ids.containsKey(hsid)==false){
@@ -418,7 +418,7 @@ public class Main {
 
 
         }
-        
+
         scn.close(); //closing the buffer reader
 
     }
