@@ -322,6 +322,7 @@ public class Main {
                             continue;
                         }
                         vax_pnt.doses_done = vax_pnt.getDoses_done() + 1;
+                        vax_pnt.day_of_first = hptl_day.get(xslty);
                         now_hptl.book_slot(xslty);
                         System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
                         System.out.println("---------------------------------------------");
