@@ -329,6 +329,33 @@ public class Main {
                 }
             }
 
+            else if (inp==6) {
+                System.out.println("Enter Hospital ID: ");
+                Integer hsid = Integer.parseInt(scn.readLine());
+
+                if (hospital_ids.containsKey(hsid)==false){
+                    System.out.println("Sorry, Hospital Not Found");
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+                }
+
+                Hospital hptxl = hospital_ids.get(hsid);
+                ArrayList<Vaccine> hst_vax = hptxl.getVaccine_list();
+                ArrayList<Integer> hst_day = hptxl.getDay_number();
+                ArrayList<Integer> hst_qnt = hptxl.getQuantity_day();
+
+                for (int hi=0; hi<hst_vax.size(); hi++){
+                    System.out.println("Day: " + hst_day.get(hi) + " Vaccine: " + hst_vax.get(hi).getName() + " Available Qty: " + hst_qnt.get(hi));
+
+                }
+
+                System.out.println("---------------------------------------------");
+                System.out.println();
+            }
+
+
+
 
 
 
