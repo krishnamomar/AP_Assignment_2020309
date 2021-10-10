@@ -14,6 +14,7 @@ public class Main {
         HashMap<String, Vaccine> vaccines_list = new HashMap<>();  //vaccine name and Vaccine object
         ArrayList<Hospital> hospital_list = new ArrayList<>(); //list of hospitals
         HashMap<Integer, ArrayList<Hospital>> hospital_pincode_hash = new HashMap<>();  //pincode with list of hospitals
+        HashMap<Vaccine, ArrayList<Hospital>> hospital_vaxName_hash = new HashMap<>(); //vaccine name and list of hospitals
         Integer create_ids = 100000;
         //Database ends here
 
@@ -214,6 +215,49 @@ public class Main {
                         Hospital xtmp = llarh.get(hpi);
                         System.out.println(xtmp.getID() + " " + xtmp.getName());
                     }
+
+                    System.out.print("Enter hospital ID: ");
+                    Integer hsid = Integer.parseInt(scn.readLine());
+                    Hospital now_hptl = hospital_ids.get(hsid);
+                    ArrayList<Vaccine> hptl_vax = now_hptl.getVaccine_list();
+                    ArrayList<Integer> hptl_day = now_hptl.getDay_number();
+                    ArrayList<Integer> hptl_qun = now_hptl.getQuantity_day();
+
+                    for (int slt=0; slt<hptl_vax.size(); slt++){
+                        System.out.println(slt + "-> Day: " + hptl_day.get(slt) + " Available Qty: " + hptl_qun.get(slt) + " Vaccine: " + hptl_vax.get(slt).getName());
+
+                    }
+
+                    System.out.print("Choose Slot: ");
+                    Integer xslty = Integer.parseInt(scn.readLine());
+
+                    if (vax_pnt.getvaccine()==null){
+                        vax_pnt.vax = hptl_vax.get(xslty);
+                        vax_pnt.doses_done = 1;
+                        vax_pnt.day_of_first = hptl_day.get(xslty);
+                        now_hptl.book_slot(xslty);
+                        System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
+                        System.out.println("---------------------------------------------");
+                        System.out.println();
+                        continue;
+                    }
+                    else if (vax_pnt.getvaccine() != hptl_vax.get(xslty)){
+                        System.out.println("Sorry! Vaccine Mixing is Not Allowed");
+                        System.out.println("---------------------------------------------");
+                        System.out.println();
+                        continue;
+                    }
+                    vax_pnt.doses_done = vax_pnt.getDoses_done() + 1;
+                    now_hptl.book_slot(xslty);
+                    System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+
+                }
+
+                else if (srh_opt==2){
+
                 }
             }
 
