@@ -5,9 +5,9 @@ public class Patient {
     String name;
     Integer age;
     Long unqID;
-    Vaccine vax;
-    Integer doses_done;
-    Integer day_of_first;
+    Vaccine vax = null;
+    Integer doses_done = 0;
+    Integer day_of_first = 0;
 
     public String getName(){
         return name;

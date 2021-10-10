@@ -9,10 +9,11 @@ public class Main {
     public static void main(String[] args) throws IOException{
 
         //Database starts here
-        HashMap<Long, Patient> patient_list = new HashMap<>();
-        HashMap<Integer, Hospital> hospital_pin = new HashMap<>();
-        HashMap<Integer, Hospital> hospital_ids = new HashMap<>();
-        HashMap<String, Vaccine> vaccines_list = new HashMap<>();
+        HashMap<Long, Patient> patient_list = new HashMap<>(); //unique id and patient object
+        HashMap<Integer, Hospital> hospital_ids = new HashMap<>(); //unique id and hospital object
+        HashMap<String, Vaccine> vaccines_list = new HashMap<>();  //vaccine name and Vaccine object
+        ArrayList<Hospital> hospital_list = new ArrayList<>(); //list of hospitals
+        HashMap<Integer, ArrayList<Hospital>> hospital_pincode_hash = new HashMap<>();  //pincode with list of hospitals
         Integer create_ids = 100000;
         //Database ends here
 
@@ -85,8 +86,17 @@ public class Main {
                 hspt.PinCode = pn;
                 hspt.Hosp_iD = create_ids;
 
-                hospital_pin.put(pn, hspt);
                 hospital_ids.put(create_ids, hspt);
+                hospital_list.add(hspt);
+
+                if (hospital_pincode_hash.containsKey(pn)){
+                    (hospital_pincode_hash.get(pn)).add(hspt);
+                }
+                else{
+                    ArrayList<Hospital> lltmph = new ArrayList<>();
+                    lltmph.add(hspt);
+                    hospital_pincode_hash.put(pn, lltmph);
+                }
 
                 create_ids +=1;
 
@@ -179,7 +189,32 @@ public class Main {
                     System.out.println();
                     continue;
                 }
-                
+
+                Patient vax_pnt = patient_list.get(pid);
+
+                System.out.println("1. Search by Area");
+                System.out.println("2. Search by Vaccine");
+                System.out.println("3. Exit");
+                System.out.print("Enter Option: ");
+                int srh_opt = Integer.parseInt(scn.readLine());
+
+                if (srh_opt==1){
+                    System.out.print("Enter PinCode: ");
+                    Integer pn = Integer.parseInt(scn.readLine());
+
+                    if (hospital_pincode_hash.containsKey(pn)==false){
+                        System.out.println("No Hospital Available at given PinCode");
+                        System.out.println("---------------------------------------------");
+                        System.out.println();
+                        continue;
+                    }
+
+                    ArrayList<Hospital> llarh = hospital_pincode_hash.get(pn);
+                    for (int hpi=0; hpi<llarh.size(); hpi++){
+                        Hospital xtmp = llarh.get(hpi);
+                        System.out.println(xtmp.getID() + " " + xtmp.getName());
+                    }
+                }
             }
 
 

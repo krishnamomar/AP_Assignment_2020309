@@ -5,15 +5,16 @@ import java.lang.*;
 public class Hospital {
 
     String Name;
-    HashMap<Vaccine, ArrayList<Integer>> vaccines_qnt_day = new HashMap<>();
+    ArrayList<Vaccine> vaccine_list = new ArrayList<>();
+    ArrayList<Integer> day_number = new ArrayList<>();
+    ArrayList<Integer> quantity_day = new ArrayList<>();
     Integer PinCode;
     Integer Hosp_iD;
 
     public void add_slot(Vaccine v, int qn, int dy){
-        ArrayList<Integer> tmp = new ArrayList<>();
-        tmp.add(qn);
-        tmp.add(dy);
-        vaccines_qnt_day.put(v, tmp);
+        vaccine_list.add(v);
+        day_number.add(dy);
+        quantity_day.add(qn);
     }
 
     public String getName(){
@@ -27,5 +28,23 @@ public class Hospital {
     public Integer getID(){
         return Hosp_iD;
     }
+
+    public void book_slot(int x){
+        quantity_day.set(x, quantity_day.get(x) - 1);
+    }
+
+    public ArrayList<Vaccine> getVaccine_list(){
+        return vaccine_list;
+    }
+
+    public ArrayList<Integer> getDay_number(){
+        return day_number;
+    }
+
+    public ArrayList<Integer> getQuantity_day(){
+        return quantity_day;
+    }
+
+
 
 }
