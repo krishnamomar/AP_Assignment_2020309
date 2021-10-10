@@ -4,7 +4,7 @@ import java.lang.*;
 public class Patient {
     String name;
     Integer age;
-    Integer unqID;
+    Long unqID;
     Vaccine vax;
     Integer doses_done;
     Integer day_of_first;
@@ -17,7 +17,7 @@ public class Patient {
         return age;
     }
 
-    public Integer getUnqID() {
+    public Long getUnqID() {
         return unqID;
     }
 }

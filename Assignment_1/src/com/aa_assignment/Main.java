@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException{
 
         //Database starts here
-        HashMap<Integer, Patient> patient_list = new HashMap<>();
+        HashMap<Long, Patient> patient_list = new HashMap<>();
         HashMap<Integer, Hospital> hospital_pin = new HashMap<>();
         HashMap<Integer, Hospital> hospital_ids = new HashMap<>();
         HashMap<String, Vaccine> vaccines_list = new HashMap<>();
@@ -23,7 +23,7 @@ public class Main {
 
         while (true){
             System.out.println("Menu Options: ");
-            System.out.println();
+            System.out.println("---------------------------------------------");
             System.out.println("1. Add Vaccine");
             System.out.println("2. Register Hospital");
             System.out.println("3. Register Citizen");
@@ -98,13 +98,13 @@ public class Main {
             else if (inp==3){
                 String nn;
                 Integer ag;
-                Integer ui;
+                Long ui;
                 System.out.print("Citizen Name: ");
                 nn = scn.readLine();
                 System.out.print("Age: ");
                 ag = Integer.parseInt(scn.readLine());
                 System.out.print("Unique ID: ");
-                ui = Integer.parseInt(scn.readLine());
+                ui = Long.parseLong(scn.readLine());
 
                 if (ag<18){
                     System.out.println("Citizen Name: " + nn + ", Age: " + ag + ", Unique ID: " + ui);
@@ -124,7 +124,20 @@ public class Main {
                 System.out.println("Citizen Name: " + pnt.getName() + ", Age: " + pnt.getAge() + ", Unique ID: " + pnt.getUnqID());
                 System.out.println("---------------------------------------------");
                 System.out.println();
-                
+
+            }
+
+            else if (inp==4){
+                Integer hsid;
+                System.out.print("Enter Hospital ID: ");
+                hsid = Integer.parseInt(scn.readLine());
+
+                if (hsid<=create_ids){
+                    System.out.println("Sorry, Hospital Not Found!");
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+                }
             }
 
 
