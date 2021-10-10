@@ -231,6 +231,13 @@ public class Main {
                     ArrayList<Integer> hptl_day = now_hptl.getDay_number();
                     ArrayList<Integer> hptl_qun = now_hptl.getQuantity_day();
 
+                    if (hptl_vax.size()==0){
+                        System.out.println("No Slots Available");
+                        System.out.println("---------------------------------------------");
+                        System.out.println();
+                        continue;
+                    }
+
                     for (int slt=0; slt<hptl_vax.size(); slt++){
                         System.out.println(slt + "-> Day: " + hptl_day.get(slt) + " Available Qty: " + hptl_qun.get(slt) + " Vaccine: " + hptl_vax.get(slt).getName());
 
@@ -360,6 +367,13 @@ public class Main {
                 ArrayList<Vaccine> hst_vax = hptxl.getVaccine_list();
                 ArrayList<Integer> hst_day = hptxl.getDay_number();
                 ArrayList<Integer> hst_qnt = hptxl.getQuantity_day();
+
+                if (hst_vax.size()==0){
+                    System.out.println("No Slots Available");
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+                }
 
                 for (int hi=0; hi<hst_vax.size(); hi++){
                     System.out.println("Day: " + hst_day.get(hi) + " Vaccine: " + hst_vax.get(hi).getName() + " Available Qty: " + hst_qnt.get(hi));
