@@ -143,7 +143,7 @@ public class Main {
                 System.out.print("Enter Hospital ID: ");
                 hsid = Integer.parseInt(scn.readLine());
 
-                if (hsid >= create_ids){
+                if (hsid >= create_ids || hsid<100000){
                     System.out.println("Sorry, Hospital Not Found!");
                     System.out.println("---------------------------------------------");
                     System.out.println();
