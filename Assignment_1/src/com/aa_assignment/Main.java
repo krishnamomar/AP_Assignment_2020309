@@ -239,28 +239,36 @@ public class Main {
                     System.out.print("Choose Slot: ");
                     Integer xslty = Integer.parseInt(scn.readLine());
 
-                    if (vax_pnt.getvaccine()==null){
-                        vax_pnt.vax = hptl_vax.get(xslty);
-                        vax_pnt.doses_done = 1;
-                        vax_pnt.day_of_first = hptl_day.get(xslty);
+                    if (hptl_qun.get(xslty)>0) {
+                        if (vax_pnt.getvaccine() == null) {
+                            vax_pnt.vax = hptl_vax.get(xslty);
+                            vax_pnt.doses_done = 1;
+                            vax_pnt.day_of_first = hptl_day.get(xslty);
+                            now_hptl.book_slot(xslty);
+                            System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
+                            System.out.println("---------------------------------------------");
+                            System.out.println();
+                            continue;
+                        } else if (vax_pnt.getvaccine() != hptl_vax.get(xslty)) {
+                            System.out.println("Sorry! Vaccine Mixing is Not Allowed");
+                            System.out.println("---------------------------------------------");
+                            System.out.println();
+                            continue;
+                        }
+                        vax_pnt.doses_done = vax_pnt.getDoses_done() + 1;
                         now_hptl.book_slot(xslty);
                         System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
                         System.out.println("---------------------------------------------");
                         System.out.println();
                         continue;
                     }
-                    else if (vax_pnt.getvaccine() != hptl_vax.get(xslty)){
-                        System.out.println("Sorry! Vaccine Mixing is Not Allowed");
+
+                    else {
+                        System.out.println("No Slots Available");
                         System.out.println("---------------------------------------------");
                         System.out.println();
                         continue;
                     }
-                    vax_pnt.doses_done = vax_pnt.getDoses_done() + 1;
-                    now_hptl.book_slot(xslty);
-                    System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
-                    System.out.println("---------------------------------------------");
-                    System.out.println();
-                    continue;
 
                 }
 
@@ -297,28 +305,35 @@ public class Main {
                     System.out.print("Choose Slot: ");
                     Integer xslty = Integer.parseInt(scn.readLine());
 
-                    if (vax_pnt.getvaccine()==null){
-                        vax_pnt.vax = hptl_vax.get(xslty);
-                        vax_pnt.doses_done = 1;
-                        vax_pnt.day_of_first = hptl_day.get(xslty);
+                    if (hptl_qun.get(xslty)>0) {
+                        if (vax_pnt.getvaccine() == null) {
+                            vax_pnt.vax = hptl_vax.get(xslty);
+                            vax_pnt.doses_done = 1;
+                            vax_pnt.day_of_first = hptl_day.get(xslty);
+                            now_hptl.book_slot(xslty);
+                            System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
+                            System.out.println("---------------------------------------------");
+                            System.out.println();
+                            continue;
+                        } else if (vax_pnt.getvaccine() != hptl_vax.get(xslty)) {
+                            System.out.println("Sorry! Vaccine Mixing is Not Allowed");
+                            System.out.println("---------------------------------------------");
+                            System.out.println();
+                            continue;
+                        }
+                        vax_pnt.doses_done = vax_pnt.getDoses_done() + 1;
                         now_hptl.book_slot(xslty);
                         System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
                         System.out.println("---------------------------------------------");
                         System.out.println();
                         continue;
                     }
-                    else if (vax_pnt.getvaccine() != hptl_vax.get(xslty)){
-                        System.out.println("Sorry! Vaccine Mixing is Not Allowed");
+                    else {
+                        System.out.println("No Slots Available");
                         System.out.println("---------------------------------------------");
                         System.out.println();
                         continue;
                     }
-                    vax_pnt.doses_done = vax_pnt.getDoses_done() + 1;
-                    now_hptl.book_slot(xslty);
-                    System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
-                    System.out.println("---------------------------------------------");
-                    System.out.println();
-                    continue;
 
                 }
 
