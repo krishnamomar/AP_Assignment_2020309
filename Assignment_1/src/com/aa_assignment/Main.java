@@ -410,18 +410,16 @@ public class Main {
                 }
             }
 
+            else{
+                System.out.println("Menu Option Doesn't Exist");
+                System.out.println("---------------------------------------------");
+                System.out.println();
+            }
 
 
-
-
-
-
-            //break;
         }
-
-
-
-        //scn.close(); call in the last
+        
+        scn.close(); //closing the buffer reader
 
     }
 }
