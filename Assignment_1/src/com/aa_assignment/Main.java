@@ -172,6 +172,14 @@ public class Main {
                     hspt.add_slot(tmp_vax.get(vxnumber), qn, dy);
                     System.out.println("Slot added by Hospital " + hspt.getID() + " for Day: " + dy + ", Available Quantity: " + qn + " of Vaccine " + (tmp_vax.get(vxnumber)).getName());
 
+                    if (hospital_vaxName_hash.containsKey(tmp_vax.get(vxnumber))){
+                        (hospital_vaxName_hash.get(tmp_vax.get(vxnumber))).add(hspt);
+                    }
+                    else{
+                        ArrayList<Hospital> lltmph = new ArrayList<>();
+                        lltmph.add(hspt);
+                        hospital_vaxName_hash.put(tmp_vax.get(vxnumber), lltmph);
+                    }
                 }
 
                 System.out.println("---------------------------------------------");
@@ -257,7 +265,67 @@ public class Main {
                 }
 
                 else if (srh_opt==2){
+                    System.out.print("Enter Vaccine name: ");
+                    String vaxnme = scn.readLine();
+                    Vaccine vv_now = vaccines_list.get(vaxnme);
 
+                    if (hospital_vaxName_hash.containsKey(vv_now)==false){
+                        System.out.println("No Hospital Available at given Vaccine");
+                        System.out.println("---------------------------------------------");
+                        System.out.println();
+                        continue;
+                    }
+
+                    ArrayList<Hospital> llarh = hospital_vaxName_hash.get(vv_now);
+                    for (int hpi=0; hpi<llarh.size(); hpi++){
+                        Hospital xtmp = llarh.get(hpi);
+                        System.out.println(xtmp.getID() + " " + xtmp.getName());
+                    }
+
+                    System.out.print("Enter hospital ID: ");
+                    Integer hsid = Integer.parseInt(scn.readLine());
+                    Hospital now_hptl = hospital_ids.get(hsid);
+                    ArrayList<Vaccine> hptl_vax = now_hptl.getVaccine_list();
+                    ArrayList<Integer> hptl_day = now_hptl.getDay_number();
+                    ArrayList<Integer> hptl_qun = now_hptl.getQuantity_day();
+
+                    for (int slt=0; slt<hptl_vax.size(); slt++){
+                        System.out.println(slt + "-> Day: " + hptl_day.get(slt) + " Available Qty: " + hptl_qun.get(slt) + " Vaccine: " + hptl_vax.get(slt).getName());
+
+                    }
+
+                    System.out.print("Choose Slot: ");
+                    Integer xslty = Integer.parseInt(scn.readLine());
+
+                    if (vax_pnt.getvaccine()==null){
+                        vax_pnt.vax = hptl_vax.get(xslty);
+                        vax_pnt.doses_done = 1;
+                        vax_pnt.day_of_first = hptl_day.get(xslty);
+                        now_hptl.book_slot(xslty);
+                        System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
+                        System.out.println("---------------------------------------------");
+                        System.out.println();
+                        continue;
+                    }
+                    else if (vax_pnt.getvaccine() != hptl_vax.get(xslty)){
+                        System.out.println("Sorry! Vaccine Mixing is Not Allowed");
+                        System.out.println("---------------------------------------------");
+                        System.out.println();
+                        continue;
+                    }
+                    vax_pnt.doses_done = vax_pnt.getDoses_done() + 1;
+                    now_hptl.book_slot(xslty);
+                    System.out.println(vax_pnt.getName() + " vaccinated with " + hptl_vax.get(xslty).getName());
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
+
+                }
+
+                else {
+                    System.out.println("---------------------------------------------");
+                    System.out.println();
+                    continue;
                 }
             }
 
