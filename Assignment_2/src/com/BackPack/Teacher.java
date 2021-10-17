@@ -3,9 +3,9 @@ package com.BackPack;
 import java.lang.*;
 
 public class Teacher {
-    String name;
+    String Name;
 
     public String getName(){
-        return name;
+        return Name;
     }
 }

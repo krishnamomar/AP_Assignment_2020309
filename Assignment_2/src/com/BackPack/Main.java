@@ -23,10 +23,39 @@ public class Main {
         ArrayList<Teacher> all_teachers = new ArrayList<>();
         ArrayList<Material> all_material = new ArrayList<>();
         ArrayList<Assessments> all_assessments = new ArrayList<>();
-
         //DataBase Ends here
 
+        //Addition of Sample Instructors and Students
+        Student a = new Student();
+        a.Name = "Charmander";
+        all_students.add(a);
+        Student b = new Student();
+        b.Name = "Bulbasaur";
+        all_students.add(b);
+        Student c = new Student();
+        c.Name = "Squirtle";
+        all_students.add(c);
+
+        Teacher x = new Teacher();
+        x.Name = "Brendan";
+        all_teachers.add(x);
+        Teacher y = new Teacher();
+        y.Name = "Hilbert";
+        //Sample added
+
         BufferedReader scn = new BufferedReader(new InputStreamReader(System.in));
+
+        while (true){
+
+        }
+
+
+
+
+
+
+
+        //scn.close(); call at last
 
     }
 }
