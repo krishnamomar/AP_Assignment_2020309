@@ -7,6 +7,7 @@ public class Assignment implements Assessments{
 
     Integer MaxMarks;
     HashMap<Student, Integer> scores = new HashMap<>();
+    HashMap<Student, String> submissions = new HashMap<>();
     boolean crnt_status = true;  //True means the assignment is open
     String question;
 
@@ -39,5 +40,21 @@ public class Assignment implements Assessments{
     public void setQuestion(String qns) {
         question = qns;
     }
+
+    @Override
+    public HashMap<Student, String> getsubmissions() {
+        return submissions;
+    }
+
+    @Override
+    public void add_score(Integer scr, Student std) {
+        scores.put(std, scr);
+    }
+
+    @Override
+    public void add_submit(String fl, Student std) {
+        submissions.put(std, fl);
+    }
+
 
 }

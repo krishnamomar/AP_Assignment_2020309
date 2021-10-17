@@ -18,6 +18,11 @@ public class Main {
     public static void main(String[] args) throws IOException{
 
         //DataBase Starts here
+        ArrayList<Comment> all_comments = new ArrayList<>();
+        ArrayList<Student> all_students = new ArrayList<>();
+        ArrayList<Teacher> all_teachers = new ArrayList<>();
+        ArrayList<Material> all_material = new ArrayList<>();
+        ArrayList<Assessments> all_assessments = new ArrayList<>();
 
         //DataBase Ends here
 

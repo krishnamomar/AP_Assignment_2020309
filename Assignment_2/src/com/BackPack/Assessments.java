@@ -10,4 +10,7 @@ public interface Assessments {
     boolean status();
     String getQuestion();
     void setQuestion(String qns);
+    HashMap<Student, String> getsubmissions();
+    void add_score(Integer scr, Student std);
+    void add_submit(String fl, Student std);
 }
