@@ -3,9 +3,7 @@ package com.BackPack;
 import java.util.*;
 import java.lang.*;
 import java.io.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 
 public class Main {
 
@@ -18,6 +16,12 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException{
+
+        //DataBase Starts here
+
+        //DataBase Ends here
+
+        BufferedReader scn = new BufferedReader(new InputStreamReader(System.in));
 
     }
 }
