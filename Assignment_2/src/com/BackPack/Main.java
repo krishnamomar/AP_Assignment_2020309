@@ -271,6 +271,25 @@ public class Main {
                         }
                     }
 
+                    else if (INP2==7){
+                        for (int cmnt_cntr=0; cmnt_cntr<all_comments.size(); cmnt_cntr++){
+                            Comment cmn_now = all_comments.get(cmnt_cntr);
+                            System.out.println(cmn_now.getText() + " - " + cmn_now.getSender());
+                            System.out.println(cmn_now.getTime());
+                            System.out.println();
+                        }
+                    }
+
+                    else if (INP2==8){
+                        Comment cmn_now = new Comment();
+                        System.out.print("Enter Comment: ");
+                        String cmnt = scn.readLine();
+                        cmn_now.setTime(date_generator());
+                        cmn_now.setSender(crnt_instr.getName());
+                        cmn_now.setText(cmnt);
+                        all_comments.add(cmn_now);
+                    }
+
 
                 }
 
