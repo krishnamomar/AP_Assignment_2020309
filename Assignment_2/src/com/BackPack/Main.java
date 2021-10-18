@@ -394,6 +394,7 @@ public class Main {
 
                     else if (INP2==3){
                         System.out.println("Pending Assessments");
+                        int chk_qnt_sub = 0;
                         for (int mtr=0; mtr<all_assessments.size(); mtr++){
                             Assessments Mtrl = all_assessments.get(mtr);
                             if (Mtrl.status()) {
@@ -403,9 +404,14 @@ public class Main {
                                     } else {
                                         System.out.println("ID: " + mtr + " Question: " + Mtrl.getQuestion());
                                     }
+                                    chk_qnt_sub++;
                                     //System.out.println("----------------");
                                 }
                             }
+                        }
+                        if (chk_qnt_sub==0){
+                            System.out.println("No Pending Assessments");
+                            continue;
                         }
                         System.out.print("Enter ID of Assessment: ");
                         Integer q_id = Integer.parseInt(scn.readLine());
@@ -439,7 +445,44 @@ public class Main {
 
 
                     }
+
+                    else if (INP2==4){
+                        System.out.println("Graded Submissions");
+                        for (int ass_q=0; ass_q<all_assessments.size(); ass_q++){
+                            Assessments crnt_sub = all_assessments.get(ass_q);
+                            if (crnt_sub.getsubmissions().containsKey(crnt_stdnt)){
+                                if (crnt_sub.getScores().containsKey(crnt_stdnt)){
+                                    System.out.println("Submission: " + crnt_sub.getsubmissions().get(crnt_stdnt));
+                                    System.out.println("Marks scored: " + crnt_sub.getScores().get(crnt_stdnt));
+                                    System.out.println("Graded by: " + crnt_sub.getChecker().get(crnt_stdnt).getName());
+                                    System.out.println("----------------------------");
+
+                                }
+                            }
+                        }
+
+                        System.out.println("Ungraded Submissions");
+                        for (int ass_q=0; ass_q<all_assessments.size(); ass_q++){
+                            Assessments crnt_sub = all_assessments.get(ass_q);
+                            if (crnt_sub.getsubmissions().containsKey(crnt_stdnt)){
+                                if (!crnt_sub.getScores().containsKey(crnt_stdnt)){
+                                    System.out.println("Submission: " + crnt_sub.getsubmissions().get(crnt_stdnt));
+                                    System.out.println("----------------------------");
+
+                                }
+                            }
+                        }
+
+                    }
+
+                    else{
+                        System.out.println("Invalid Menu Option!");
+                    }
                 }
+            }
+
+            else {
+                System.out.println("Invalid Menu Option!");
             }
 
 
@@ -449,11 +492,7 @@ public class Main {
 
 
 
-
-
-
-
-        //scn.close(); call at last
+        scn.close();
 
     }
 }
