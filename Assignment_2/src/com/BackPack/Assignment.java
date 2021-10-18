@@ -8,6 +8,7 @@ public class Assignment implements Assessments{
     Integer MaxMarks;
     HashMap<Student, Integer> scores = new HashMap<>();
     HashMap<Student, String> submissions = new HashMap<>();
+    HashMap<Student, Teacher> checkedBy = new HashMap<>();
     boolean crnt_status = true;  //True means the assignment is open
     String question;
 
@@ -49,6 +50,16 @@ public class Assignment implements Assessments{
     @Override
     public void add_score(Integer scr, Student std) {
         scores.put(std, scr);
+    }
+
+    @Override
+    public void add_check(Teacher tch, Student std) {
+        checkedBy.put(std, tch);
+    }
+
+    @Override
+    public HashMap<Student, Teacher> getChecker() {
+        return checkedBy;
     }
 
     @Override

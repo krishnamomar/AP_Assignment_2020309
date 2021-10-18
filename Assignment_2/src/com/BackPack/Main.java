@@ -203,7 +203,18 @@ public class Main {
                     }
 
                     else if (INP2==5){
-
+                        System.out.println("List of Assessments");
+                        for (int mtr=0; mtr<all_assessments.size(); mtr++){
+                            Assessments Mtrl = all_assessments.get(mtr);
+                            if (Mtrl.what_type()==0){
+                                System.out.println("ID: " + mtr + " Assignment: " + Mtrl.getQuestion() + " Max Marks: " + Mtrl.getMaxMarks());
+                            }
+                            else{
+                                System.out.println("ID: " + mtr + " Question: " + Mtrl.getQuestion());
+                            }
+                            System.out.println("----------------");
+                        }
+                        System.out.print("Enter ID of Assessment to view Submissions: ");
                     }
 
 

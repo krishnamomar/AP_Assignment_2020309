@@ -12,6 +12,8 @@ public interface Assessments {
     void setQuestion(String qns);
     HashMap<Student, String> getsubmissions();
     void add_score(Integer scr, Student std);
+    void add_check(Teacher tch, Student std);
+    HashMap<Student, Teacher> getChecker();
     void add_submit(String fl, Student std);
     void setMaxMarks(Integer mx);
     Integer what_type();  //return 0 for Assignments and 1 for Quiz
