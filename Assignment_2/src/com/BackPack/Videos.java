@@ -7,7 +7,7 @@ public class Videos implements Material{
 
     @Override
     public void setName(String inp) {
-        Name = inp;
+        this.Name = inp;
 
     }
 
@@ -15,6 +15,11 @@ public class Videos implements Material{
     public void AddContent(String inp) {
         file = inp;
 
+    }
+
+    @Override
+    public void setUploader(Teacher tch) {
+        this.upld = tch;
     }
 
     @Override

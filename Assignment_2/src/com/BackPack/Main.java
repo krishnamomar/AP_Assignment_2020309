@@ -96,6 +96,42 @@ public class Main {
 
                         if (lcsv==1){
                             Material sld = new Slides();
+                            sld.setUploader(crnt_instr);
+                            System.out.print("Enter Topic of Slide: ");
+                            String tp = scn.readLine();
+                            sld.setName(tp);
+                            System.out.print("Enter the Number of Slides: ");
+                            Integer sldxn = Integer.parseInt(scn.readLine());
+                            System.out.println("Enter content of Slides");
+                            for (int inx=1; inx<=sldxn; inx++){
+                                System.out.print("Enter content of Slide " + inx + ": ");
+                                String slcnt = scn.readLine();
+                                sld.AddContent(slcnt);
+                            }
+                            all_material.add(sld);
+
+                        }
+
+                        else if (lcsv==2){
+                            Material sld = new Videos();
+                            sld.setUploader(crnt_instr);
+                            System.out.print("Enter Topic of Video: ");
+                            String tp = scn.readLine();
+                            sld.setName(tp);
+                            System.out.print("Enter File name of Video: ");
+                            String fln = scn.readLine();
+
+                            //file type check
+                            int fln_len = fln.length();
+                            String fln_sub = fln.substring(fln_len-4, fln_len);
+                            if(!fln_sub.equals(".mp4")){
+                                System.out.println("Invalid File Type");
+                            }
+                            else{
+                                sld.AddContent(fln);
+                                all_material.add(sld);
+                            }
+
                         }
 
                     }

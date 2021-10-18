@@ -10,13 +10,18 @@ public class Slides implements Material{
 
     @Override
     public void setName(String inp) {
-        Name = inp;
+        this.Name = inp;
     }
 
     @Override
     public void AddContent(String inp) {
         content.add(inp);
 
+    }
+
+    @Override
+    public void setUploader(Teacher tch) {
+        this.upld = tch;
     }
 
     @Override
