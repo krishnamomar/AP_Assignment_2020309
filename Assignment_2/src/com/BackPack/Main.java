@@ -215,6 +215,60 @@ public class Main {
                             System.out.println("----------------");
                         }
                         System.out.print("Enter ID of Assessment to view Submissions: ");
+                        Integer a_id = Integer.parseInt(scn.readLine());
+                        Assessments crnt_ass = all_assessments.get(a_id);
+                        System.out.println("Choose ID from these ungraded submissions");
+                        ArrayList<Student> filter_list = new ArrayList<>();
+                        HashMap<Student, Integer> ass_score = crnt_ass.getScores();
+                        HashMap<Student, String> ass_submit = crnt_ass.getsubmissions();
+                        int iter_i = 0;
+                        for (Student std_i : ass_submit.keySet()){
+                            if (!ass_score.containsKey(std_i)){
+                                filter_list.add(std_i);
+                                System.out.println(iter_i + " " + std_i.getName());
+                                iter_i++;
+                            }
+                        }
+                        Integer id_st = Integer.parseInt(scn.readLine());
+                        Student crnt_stdnt = filter_list.get(id_st);
+
+                        System.out.println("Submission: " + ass_submit.get(crnt_stdnt));
+                        System.out.println("-------------------------------");
+                        System.out.println("Max Marks " + crnt_ass.getMaxMarks());
+                        System.out.print("Marks scored: ");
+                        Integer marks_scored_crnt = Integer.parseInt(scn.readLine());
+                        if (marks_scored_crnt>crnt_ass.getMaxMarks()){
+                            System.out.println("Cannot award more than Max Marks");
+                        }
+                        else{
+                            crnt_ass.add_score(marks_scored_crnt, crnt_stdnt);
+                            crnt_ass.add_check(crnt_instr, crnt_stdnt);
+                        }
+                    }
+
+                    else if (INP2==6){
+                        System.out.println("List of Open Assessments:");
+                        int jstcnt = 0;
+                        for (int mtr=0; mtr<all_assessments.size(); mtr++){
+                            Assessments Mtrl = all_assessments.get(mtr);
+                            if (Mtrl.status()) {
+                                if (Mtrl.what_type() == 0) {
+                                    System.out.println("ID: " + mtr + " Assignment: " + Mtrl.getQuestion() + " Max Marks: " + Mtrl.getMaxMarks());
+                                } else {
+                                    System.out.println("ID: " + mtr + " Question: " + Mtrl.getQuestion());
+                                }
+                                System.out.println("----------------");
+                                jstcnt++;
+                            }
+                        }
+                        if (jstcnt>0 && all_assessments.size()!=0) {
+                            System.out.print("Enter id of Assessment to close: ");
+                            Integer cls_id = Integer.parseInt(scn.readLine());
+                            all_assessments.get(cls_id).close();
+                        }
+                        else{
+                            System.out.println("All Assessments already closed!");
+                        }
                     }
 
 

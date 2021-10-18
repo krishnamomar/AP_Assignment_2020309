@@ -7,7 +7,7 @@ public class Quiz implements Assessments{
     HashMap<Student, Integer> scores = new HashMap<>();
     HashMap<Student, String> submissions = new HashMap<>();
     HashMap<Student, Teacher> checkedBy = new HashMap<>();
-    boolean crnt_status = true;  //True means the assignment is open
+    boolean crnt_status = true;  //True means the quiz is open
     String question;
 
     @Override
