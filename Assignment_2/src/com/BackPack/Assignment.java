@@ -61,5 +61,10 @@ public class Assignment implements Assessments{
         this.MaxMarks = mx;
     }
 
+    @Override
+    public Integer what_type() {
+        return 0;
+    }
+
 
 }

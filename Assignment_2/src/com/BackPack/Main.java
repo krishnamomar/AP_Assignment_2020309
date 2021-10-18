@@ -9,7 +9,7 @@ public class Main {
 
     public static String date_generator() {
         Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z");
+        SimpleDateFormat formatter = new SimpleDateFormat("E dd MMM yyyy HH:mm:ss z");
         String strDate = formatter.format(date);
 
         return strDate;
@@ -184,7 +184,26 @@ public class Main {
                                 System.out.println("Date of Upload: " + Mtrl.getDate());
                                 System.out.println("Uploaded by: " + Mtrl.uploader().getName());
                             }
+                            System.out.println();
                         }
+                    }
+
+                    else if (INP2==4){
+                        for (int mtr=0; mtr<all_assessments.size(); mtr++){
+                            Assessments Mtrl = all_assessments.get(mtr);
+                            if (Mtrl.what_type()==0){
+                                System.out.println("ID: " + mtr + " Assignment: " + Mtrl.getQuestion() + " Max Marks: " + Mtrl.getMaxMarks());
+                            }
+                            else{
+                                System.out.println("ID: " + mtr + " Question: " + Mtrl.getQuestion());
+                            }
+                            System.out.println("----------------");
+                        }
+
+                    }
+
+                    else if (INP2==5){
+
                     }
 
 

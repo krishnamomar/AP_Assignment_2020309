@@ -58,4 +58,9 @@ public class Quiz implements Assessments{
     public void setMaxMarks(Integer mx) {
         return;
     }
+
+    @Override
+    public Integer what_type() {
+        return 1;
+    }
 }

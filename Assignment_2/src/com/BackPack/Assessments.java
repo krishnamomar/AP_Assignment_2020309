@@ -14,4 +14,5 @@ public interface Assessments {
     void add_score(Integer scr, Student std);
     void add_submit(String fl, Student std);
     void setMaxMarks(Integer mx);
+    Integer what_type();  //return 0 for Assignments and 1 for Quiz
 }
