@@ -7,6 +7,7 @@ public class Slides implements Material{
     String Name;
     ArrayList<String> content = new ArrayList<>();
     Teacher upld;
+    String date_of_upld;
 
     @Override
     public void setName(String inp) {
@@ -25,6 +26,16 @@ public class Slides implements Material{
     }
 
     @Override
+    public void setDate(String tm) {
+        this.date_of_upld = tm;
+    }
+
+    @Override
+    public String getDate() {
+        return date_of_upld;
+    }
+
+    @Override
     public String getName() {
         return Name;
     }
@@ -34,11 +45,13 @@ public class Slides implements Material{
         return upld;
     }
 
+    @Override
     public ArrayList<String> getContent(){
         return content;
     }
 
-    public Integer getFile(){
-        return 0;
+    @Override
+    public String getFile(){
+        return null;
     }
 }

@@ -13,4 +13,5 @@ public interface Assessments {
     HashMap<Student, String> getsubmissions();
     void add_score(Integer scr, Student std);
     void add_submit(String fl, Student std);
+    void setMaxMarks(Integer mx);
 }

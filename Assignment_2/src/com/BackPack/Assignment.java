@@ -56,5 +56,10 @@ public class Assignment implements Assessments{
         submissions.put(std, fl);
     }
 
+    @Override
+    public void setMaxMarks(Integer mx) {
+        this.MaxMarks = mx;
+    }
+
 
 }

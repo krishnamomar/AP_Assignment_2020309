@@ -53,4 +53,9 @@ public class Quiz implements Assessments{
     public void add_submit(String fl, Student std) {
         submissions.put(std, fl);
     }
+
+    @Override
+    public void setMaxMarks(Integer mx) {
+        return;
+    }
 }
