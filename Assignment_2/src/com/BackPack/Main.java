@@ -290,11 +290,12 @@ public class Main {
                         all_comments.add(cmn_now);
                     }
 
+                    else {
+                        System.out.println("Invalid Menu Option!");
+                    }
+
 
                 }
-
-
-
 
 
             }
