@@ -235,6 +235,7 @@ public class Main {
                             }
                         }
                         if (iter_i==0){
+                            System.out.println("All Submissions Checked");
                             continue;
                         }
                         Integer id_st = Integer.parseInt(scn.readLine());
