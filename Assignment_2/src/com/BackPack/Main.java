@@ -125,6 +125,11 @@ public class Main {
 
                             //file type check
                             int fln_len = fln.length();
+
+                            if (fln_len<5){
+                                System.out.println("Invalid File Type");
+                                continue;
+                            }
                             String fln_sub = fln.substring(fln_len-4, fln_len);
                             if(!fln_sub.equals(".mp4")){
                                 System.out.println("Invalid File Type");
@@ -228,6 +233,9 @@ public class Main {
                                 System.out.println(iter_i + " " + std_i.getName());
                                 iter_i++;
                             }
+                        }
+                        if (iter_i==0){
+                            continue;
                         }
                         Integer id_st = Integer.parseInt(scn.readLine());
                         Student crnt_stdnt = filter_list.get(id_st);
@@ -382,6 +390,54 @@ public class Main {
                         cmn_now.setSender(crnt_stdnt.getName());
                         cmn_now.setText(cmnt);
                         all_comments.add(cmn_now);
+                    }
+
+                    else if (INP2==3){
+                        System.out.println("Pending Assessments");
+                        for (int mtr=0; mtr<all_assessments.size(); mtr++){
+                            Assessments Mtrl = all_assessments.get(mtr);
+                            if (Mtrl.status()) {
+                                if (! Mtrl.getsubmissions().containsKey(crnt_stdnt)) {
+                                    if (Mtrl.what_type() == 0) {
+                                        System.out.println("ID: " + mtr + " Assignment: " + Mtrl.getQuestion() + " Max Marks: " + Mtrl.getMaxMarks());
+                                    } else {
+                                        System.out.println("ID: " + mtr + " Question: " + Mtrl.getQuestion());
+                                    }
+                                    //System.out.println("----------------");
+                                }
+                            }
+                        }
+                        System.out.print("Enter ID of Assessment: ");
+                        Integer q_id = Integer.parseInt(scn.readLine());
+                        Assessments crnt_ass = all_assessments.get(q_id);
+                        if (crnt_ass.what_type()==0){
+                            System.out.print("Enter Filename of Assignment: ");
+                            String fln = scn.readLine();
+
+                            //file type check
+                            int fln_len = fln.length();
+
+                            if (fln_len<5){
+                                System.out.println("Invalid File Type");
+                                continue;
+                            }
+                            String fln_sub = fln.substring(fln_len-4, fln_len);
+                            if(!fln_sub.equals(".zip")){
+                                System.out.println("Invalid File Type");
+                            }
+                            else{
+                                crnt_ass.add_submit(fln, crnt_stdnt);
+                            }
+                        }
+
+                        else{
+                            System.out.print(crnt_ass.getQuestion() + " ");
+                            String ans_inp = scn.readLine();
+
+                            crnt_ass.add_submit(ans_inp, crnt_stdnt);
+                        }
+
+
                     }
                 }
             }
