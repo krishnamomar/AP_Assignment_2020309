@@ -32,4 +32,8 @@ public class Slides implements Material{
     public ArrayList<String> getContent(){
         return content;
     }
+
+    public Integer getFile(){
+        return 0;
+    }
 }
