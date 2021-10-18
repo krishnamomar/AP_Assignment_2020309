@@ -302,7 +302,88 @@ public class Main {
 
 
             else if (INP1==2){   //Student
+                System.out.println("Students: ");
+                System.out.println("0 - " + all_students.get(0).getName());
+                System.out.println("1 - " + all_students.get(1).getName());
+                System.out.println("2 - " + all_students.get(2).getName());
+                System.out.print("Choose ID: ");
+                Integer c_t_i = Integer.parseInt(scn.readLine());
+                System.out.println("-----------------------------------------------------------");
+                Student crnt_stdnt = all_students.get(c_t_i);
 
+                //inner while loop
+                while (true){
+                    System.out.println("Welcome " + crnt_stdnt.getName());
+                    System.out.println("1. View Lecture Materials");
+                    System.out.println("2. View Assessments");
+                    System.out.println("3. Submit Assessment");
+                    System.out.println("4. View grades");
+                    System.out.println("5. View Comments");
+                    System.out.println("6. Add comments");
+                    System.out.println("7. Logout");
+
+                    Integer INP2 = Integer.parseInt(scn.readLine());
+
+                    if (INP2==7){
+                        break;
+                    }
+
+                    else if (INP2==1){
+                        for (int mtr=0; mtr<all_material.size(); mtr++){
+                            Material Mtrl = all_material.get(mtr);
+                            if (Mtrl.getFile()==null){
+                                System.out.println("Title: " + Mtrl.getName());
+                                ArrayList<String> slds = Mtrl.getContent();
+                                System.out.println("Number of Slides: " + slds.size());
+                                for (int slds_qnt=1; slds_qnt<=slds.size(); slds_qnt++){
+                                    System.out.println("Slide " + slds_qnt + ": " + slds.get(slds_qnt-1));
+                                }
+                                System.out.println("Date of Upload: " + Mtrl.getDate());
+                                System.out.println("Uploaded by: " + Mtrl.uploader().getName());
+                            }
+
+                            else{
+                                System.out.println("Title of Video: " + Mtrl.getName());
+                                System.out.println("Video File: " + Mtrl.getFile());
+                                System.out.println("Date of Upload: " + Mtrl.getDate());
+                                System.out.println("Uploaded by: " + Mtrl.uploader().getName());
+                            }
+                            System.out.println();
+                        }
+                    }
+
+                    else if (INP2==2){
+                        for (int mtr=0; mtr<all_assessments.size(); mtr++){
+                            Assessments Mtrl = all_assessments.get(mtr);
+                            if (Mtrl.what_type()==0){
+                                System.out.println("ID: " + mtr + " Assignment: " + Mtrl.getQuestion() + " Max Marks: " + Mtrl.getMaxMarks());
+                            }
+                            else{
+                                System.out.println("ID: " + mtr + " Question: " + Mtrl.getQuestion());
+                            }
+                            System.out.println("----------------");
+                        }
+                    }
+
+                    else if (INP2==5){
+                        for (int cmnt_cntr=0; cmnt_cntr<all_comments.size(); cmnt_cntr++){
+                            Comment cmn_now = all_comments.get(cmnt_cntr);
+                            System.out.println(cmn_now.getText() + " - " + cmn_now.getSender());
+                            System.out.println(cmn_now.getTime());
+                            System.out.println();
+                        }
+                    }
+
+                    else if (INP2==6){
+                        Comment cmn_now = new Comment();
+                        System.out.print("Enter Comment: ");
+                        String cmnt = scn.readLine();
+                        cmn_now.setTime(date_generator());
+                        cmn_now.setSender(crnt_stdnt.getName());
+                        cmn_now.setText(cmnt);
+                        all_comments.add(cmn_now);
+                    }
+                }
             }
 
 
