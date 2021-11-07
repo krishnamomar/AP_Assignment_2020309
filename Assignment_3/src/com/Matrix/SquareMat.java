@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SquareMat extends matrix{
     private String name;
-    private ArrayList<ArrayList<Integer>> grid;
+    private ArrayList<ArrayList<Double>> grid;
     private Integer row;
     private Integer column;
 
@@ -12,7 +12,7 @@ public class SquareMat extends matrix{
         this.name = nm;
     }
 
-    public void setGrid(ArrayList<ArrayList<Integer>> grd){
+    public void setGrid(ArrayList<ArrayList<Double>> grd){
         this.grid = grd;
         this.row = grd.size();
         this.column = grd.size();
@@ -22,7 +22,7 @@ public class SquareMat extends matrix{
         return name;
     }
 
-    public ArrayList<ArrayList<Integer>> getGrid(){
+    public ArrayList<ArrayList<Double>> getGrid(){
         return grid;
     }
 

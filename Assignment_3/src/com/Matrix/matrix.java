@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class matrix {
 
     private String name;
-    private ArrayList<ArrayList<Integer>> grid;
+    private ArrayList<ArrayList<Double>> grid;
     private Integer row;
     private Integer column;
 
@@ -14,7 +14,7 @@ public class matrix {
         this.name = nm;
     }
 
-    public void setGrid(ArrayList<ArrayList<Integer>> grd){
+    public void setGrid(ArrayList<ArrayList<Double>> grd){
         this.grid = grd;
         this.row = grd.size();
         this.column = (grd.get(0)).size();
@@ -24,7 +24,7 @@ public class matrix {
         return name;
     }
 
-    public ArrayList<ArrayList<Integer>> getGrid(){
+    public ArrayList<ArrayList<Double>> getGrid(){
         return grid;
     }
 

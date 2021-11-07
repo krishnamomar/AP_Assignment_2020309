@@ -5,7 +5,7 @@ import java.lang.*;
 
 public class DiagnolMat extends SquareMat{
     private String name;
-    private ArrayList<Integer> grid;
+    private ArrayList<Double> grid;
     private Integer row;
     private Integer column;
 
@@ -26,11 +26,11 @@ public class DiagnolMat extends SquareMat{
     }
 
     @Override
-    public void setGrid(ArrayList<ArrayList<Integer>> grd){
+    public void setGrid(ArrayList<ArrayList<Double>> grd){
         this.row = grd.size();
         this.column = grd.size();
 
-        ArrayList<Integer> crnt = new ArrayList<>();
+        ArrayList<Double> crnt = new ArrayList<>();
         for (int i=0; i<row; i++){
             crnt.add(grd.get(i).get(i));
         }
@@ -39,11 +39,11 @@ public class DiagnolMat extends SquareMat{
     }
 
     @Override
-    public ArrayList<ArrayList<Integer>> getGrid(){
-        ArrayList<ArrayList<Integer>> crnt = new ArrayList<>();
+    public ArrayList<ArrayList<Double>> getGrid(){
+        ArrayList<ArrayList<Double>> crnt = new ArrayList<>();
 
         for (int i=0; i<row; i++){
-            ArrayList<Integer> x = new ArrayList<>();
+            ArrayList<Double> x = new ArrayList<>();
             crnt.add(x);
         }
 
@@ -53,7 +53,7 @@ public class DiagnolMat extends SquareMat{
                     crnt.get(i).add(grid.get(i));
                 }
                 else{
-                    crnt.get(i).add(0);
+                    crnt.get(i).add(0.0);
                 }
             }
         }
