@@ -3,7 +3,7 @@ package com.Matrix;
 import java.util.ArrayList;
 import java.lang.*;
 
-public class DiagnolMat extends matrix{
+public class DiagnolMat extends SquareMat{
     private String name;
     private ArrayList<Integer> grid;
     private Integer row;
