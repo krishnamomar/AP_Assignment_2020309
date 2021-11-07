@@ -3,7 +3,7 @@ package com.Matrix;
 import java.util.ArrayList;
 import java.lang.*;
 
-public class DiagnolMat extends SquareMat{
+public class DiagnolMat extends SymmetricMat{
     private String name;
     private ArrayList<Double> grid;
     private Integer row;
