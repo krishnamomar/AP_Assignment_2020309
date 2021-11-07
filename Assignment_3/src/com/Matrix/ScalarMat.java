@@ -2,10 +2,11 @@ package com.Matrix;
 
 import java.util.ArrayList;
 
-public class IndentityMat extends ScalarMat{
+public class ScalarMat extends DiagnolMat{
     private String name;
     private Integer row;
     private Integer column;
+    private Double val;
 
     public void setName(String nm){
         this.name = nm;
@@ -25,6 +26,7 @@ public class IndentityMat extends ScalarMat{
 
     @Override
     public void setGrid(ArrayList<ArrayList<Double>> grd){
+        this.val = grd.get(0).get(0);
         this.row = grd.size();
         this.column = grd.size();
     }
@@ -42,7 +44,7 @@ public class IndentityMat extends ScalarMat{
         for (int i=0; i<row; i++){
             for (int j=0; j<row; j++){
                 if (i==j){
-                    crnt.get(i).add(1.0);
+                    crnt.get(i).add(val);
                 }
                 else{
                     crnt.get(i).add(0.0);
