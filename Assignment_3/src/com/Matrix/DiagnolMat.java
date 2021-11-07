@@ -43,6 +43,11 @@ public class DiagnolMat extends matrix{
         ArrayList<ArrayList<Integer>> crnt = new ArrayList<>();
 
         for (int i=0; i<row; i++){
+            ArrayList<Integer> x = new ArrayList<>();
+            crnt.add(x);
+        }
+
+        for (int i=0; i<row; i++){
             for (int j=0; j<row; j++){
                 if (i==j){
                     crnt.get(i).add(grid.get(i));
