@@ -40,7 +40,7 @@ public class Main {
         return true;
     }
 
-    public static ArrayList<ArrayList<Double>> transpose(ArrayList<ArrayList<Double>> grd, Integer rw, Integer cl){
+    public static ArrayList<ArrayList<Double>> Transpose(ArrayList<ArrayList<Double>> grd, Integer rw, Integer cl){
         // rw and cl are row and column of original matrix
         ArrayList<ArrayList<Double>> crnt = new ArrayList<>();
 
@@ -148,6 +148,63 @@ public class Main {
 
     }
 
+    public static ArrayList<ArrayList<Double>> Addition(ArrayList<ArrayList<Double>> Aarr, ArrayList<ArrayList<Double>> Barr, Integer rw, Integer cl){
+        ArrayList<ArrayList<Double>> ans = new ArrayList<>();
+        for (int i=0; i<rw; i++){
+            ArrayList<Double> x = new ArrayList<>();
+            ans.add(x);
+        }
+
+        for (int i=0; i<rw; i++){
+            for (int j=0; j<cl; j++){
+                ans.get(i).add(Aarr.get(i).get(j) + Barr.get(i).get(j));
+            }
+        }
+
+        return ans;
+    }
+
+    public static ArrayList<ArrayList<Double>> Scalar_Multiplication(ArrayList<ArrayList<Double>> grd, Integer rw, Integer cl, Integer scalar){
+        ArrayList<ArrayList<Double>> ans = new ArrayList<>();
+        for (int i=0; i<rw; i++){
+            ArrayList<Double> x = new ArrayList<>();
+            ans.add(x);
+        }
+
+        for (int i=0; i<rw; i++){
+            for (int j=0; j<cl; j++){
+                ans.get(i).add(scalar*(grd.get(i).get(j)));
+            }
+        }
+
+        return ans;
+    }
+
+    public static ArrayList<ArrayList<Double>> Vector_Multiplication(ArrayList<ArrayList<Double>> Aarr, ArrayList<ArrayList<Double>> Barr, Integer Arw, Integer Acl, Integer Brw, Integer Bcl){
+        // we'll do A x B, so Acl==Brw
+
+        double ans_t[][] = new double[Arw][Bcl];
+
+        for (int i=0; i<Arw; i++) {
+            for (int j=0; j<Bcl; j++) {
+                for (int k=0; k<Brw; k++)
+                    ans_t[i][j] += (Aarr.get(i).get(k))*(Barr.get(k).get(j));
+            }
+        }
+
+        ArrayList<ArrayList<Double>> ans = new ArrayList<>();
+
+        for (int i=0; i<Arw; i++){
+            ArrayList<Double> x = new ArrayList<>();
+            for (int j=0; j<Bcl; j++){
+                x.add(ans_t[i][j]);
+            }
+            ans.add(x);
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
 	// write your code here
 
@@ -171,7 +228,7 @@ public class Main {
 
         print_matrix(cntr, 3, 3);
         System.out.println(Determinant(cntr, 3));
-        ArrayList<ArrayList<Double>> cntr_inv = Inverse_Matrix(cntr, 3);
+        ArrayList<ArrayList<Double>> cntr_inv = Vector_Multiplication(cntr, cntr, 3, 3, 3, 3);
         print_matrix(cntr_inv, 3, 3);
 
 
