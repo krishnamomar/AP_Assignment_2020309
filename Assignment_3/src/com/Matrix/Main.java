@@ -205,6 +205,23 @@ public class Main {
         return ans;
     }
 
+    public static ArrayList<ArrayList<Double>> Element_Addition(ArrayList<ArrayList<Double>> grd, Integer rw, Integer cl, Integer scalar){
+        ArrayList<ArrayList<Double>> ans = new ArrayList<>();
+        for (int i=0; i<rw; i++){
+            ArrayList<Double> x = new ArrayList<>();
+            ans.add(x);
+        }
+
+        for (int i=0; i<rw; i++){
+            for (int j=0; j<cl; j++){
+                ans.get(i).add(scalar+(grd.get(i).get(j)));
+            }
+        }
+
+        return ans;
+    }
+
+
     public static void main(String[] args) {
 	// write your code here
 
