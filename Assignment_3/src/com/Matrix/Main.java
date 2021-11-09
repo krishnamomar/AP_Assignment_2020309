@@ -517,7 +517,9 @@ public class Main {
 
             }
 
-            System.out.println(All_Matrices.get(0).getMatType());
+            else if (Opr_Input==2){
+                System.out.println("Enter the type of Matrix: ");
+            }
         }
 
 
