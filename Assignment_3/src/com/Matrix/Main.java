@@ -238,6 +238,56 @@ public class Main {
         return true;
     }
 
+    public static boolean Check_Ones(ArrayList<ArrayList<Double>> grd, Integer rw, Integer cl){
+        for (int i=0; i<rw; i++){
+            for (int j=0; j<cl; j++){
+                if (grd.get(i).get(j) != 1.0){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean Check_Null(ArrayList<ArrayList<Double>> grd, Integer rw, Integer cl){
+        for (int i=0; i<rw; i++){
+            for (int j=0; j<cl; j++){
+                if (grd.get(i).get(j) != 0.0){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean Check_Symmetric(ArrayList<ArrayList<Double>> grd, Integer sz){
+        // should already be square
+
+        ArrayList<ArrayList<Double>> chk = Transpose(grd, sz, sz);
+
+        return Is_Same(grd, chk, sz, sz);
+    }
+
+    public static boolean Check_SkewSymmetric(ArrayList<ArrayList<Double>> grd, Integer sz){
+        // should already be square
+
+        ArrayList<ArrayList<Double>> chk1 = Transpose(grd, sz, sz);
+        ArrayList<ArrayList<Double>> chk2 = Scalar_Multiplication(grd, sz, sz, -1);
+
+        return Is_Same(chk1, chk2, sz, sz);
+    }
+
+    public static boolean Check_Scalar(ArrayList<ArrayList<Double>> grd, Integer sz){
+        // assumed to be diagnol
+        return true;
+    }
+
+
+
+
+
 
     public static void main(String[] args) throws IOException{
 

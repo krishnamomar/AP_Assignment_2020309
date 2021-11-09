@@ -52,4 +52,9 @@ public class IndentityMat extends ScalarMat{
 
         return crnt;
     }
+
+    @Override
+    public Integer getMatType(){
+        return 12;
+    }
 }

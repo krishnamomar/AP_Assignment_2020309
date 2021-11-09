@@ -50,4 +50,9 @@ public class ColumnMat extends matrix{
 
         return crnt;
     }
+
+    @Override
+    public Integer getMatType(){
+        return 3;
+    }
 }

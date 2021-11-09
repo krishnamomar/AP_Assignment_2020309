@@ -37,4 +37,9 @@ public class SingletonMat extends SquareMat{
     public Integer getColumn() {
         return 1;
     }
+
+    @Override
+    public Integer getMatType(){
+        return 8;
+    }
 }

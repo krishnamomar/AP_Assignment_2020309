@@ -52,4 +52,9 @@ public class RowMat extends matrix{
 
         return crnt;
     }
+
+    @Override
+    public Integer getMatType(){
+        return 2;
+    }
 }

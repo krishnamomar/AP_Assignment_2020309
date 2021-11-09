@@ -35,4 +35,8 @@ public class matrix {
     public Integer getColumn() {
         return column;
     }
+
+    public Integer getMatType(){
+        return 1;
+    }
 }

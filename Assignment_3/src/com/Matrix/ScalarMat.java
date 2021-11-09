@@ -54,4 +54,9 @@ public class ScalarMat extends DiagnolMat{
 
         return crnt;
     }
+
+    @Override
+    public Integer getMatType(){
+        return 11;
+    }
 }

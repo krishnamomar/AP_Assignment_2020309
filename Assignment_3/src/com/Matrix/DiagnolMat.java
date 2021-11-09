@@ -60,4 +60,9 @@ public class DiagnolMat extends SymmetricMat{
 
         return crnt;
     }
+
+    @Override
+    public Integer getMatType(){
+        return 10;
+    }
 }

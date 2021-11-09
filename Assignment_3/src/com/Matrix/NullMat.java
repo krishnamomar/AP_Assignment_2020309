@@ -41,4 +41,9 @@ public class NullMat extends matrix{
     public Integer getColumn() {
         return column;
     }
+
+    @Override
+    public Integer getMatType(){
+        return 5;
+    }
 }

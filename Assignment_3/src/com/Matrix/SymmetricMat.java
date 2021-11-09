@@ -33,4 +33,9 @@ public class SymmetricMat extends SquareMat{
     public Integer getColumn() {
         return column;
     }
+
+    @Override
+    public Integer getMatType(){
+        return 9;
+    }
 }
