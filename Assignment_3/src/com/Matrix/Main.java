@@ -1,7 +1,8 @@
 package com.Matrix;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.lang.*;
+import java.io.*;
 
 public class Main {
 
@@ -222,31 +223,20 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
-	// write your code here
-
-        ArrayList<ArrayList<Double>> cntr = new ArrayList<>();
-        ArrayList<Double> x = new ArrayList<>();
-        ArrayList<Double> y = new ArrayList<>();
-        ArrayList<Double> z = new ArrayList<>();
-        x.add(1.0);
-        x.add(2.0);
-        x.add(2.0);
-        y.add(0.0);
-        y.add(5.0);
-        y.add(7.0);
-        z.add(1.0);
-        z.add(1.0);
-        z.add(1.0);
-        cntr.add(x);
-        cntr.add(y);
-        cntr.add(z);
+    public static void main(String[] args) throws IOException{
+        BufferedReader scn = new BufferedReader(new InputStreamReader(System.in));
 
 
-        print_matrix(cntr, 3, 3);
-        System.out.println(Determinant(cntr, 3));
-        ArrayList<ArrayList<Double>> cntr_inv = Vector_Multiplication(cntr, cntr, 3, 3, 3, 3);
-        print_matrix(cntr_inv, 3, 3);
+
+
+
+
+
+
+
+
+
+        scn.close();
 
 
 
