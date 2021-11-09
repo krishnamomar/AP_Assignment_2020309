@@ -19,7 +19,7 @@ public class Main {
         for(int i=0; i<grd.size(); i++){
             for (int j=0; j<grd.get(0).size(); j++){
                 if (i>j){
-                    if (grd.get(i).get(j)!=0){
+                    if (grd.get(i).get(j)!=0.0){
                         return false;
                     }
                 }
@@ -32,7 +32,7 @@ public class Main {
         for(int i=0; i<grd.size(); i++){
             for (int j=0; j<grd.get(0).size(); j++){
                 if (i<j){
-                    if (grd.get(i).get(j)!=0){
+                    if (grd.get(i).get(j)!=0.0){
                         return false;
                     }
                 }
@@ -226,10 +226,7 @@ public class Main {
         // assumed that rw and cl are same then only this function is called
         for (int i=0; i<rw; i++){
             for (int j=0; j<cl; j++){
-                if (Aarr.get(i).get(j)==Barr.get(i).get(j)){
-                    continue;
-                }
-                else{
+                if (Math.abs(Aarr.get(i).get(j) - Barr.get(i).get(j)) > 1e-6){
                     return false;
                 }
             }
@@ -279,21 +276,14 @@ public class Main {
         return Is_Same(chk1, chk2, sz, sz);
     }
 
-    public static boolean Check_Scalar(ArrayList<ArrayList<Double>> grd, Integer sz){
-        // assumed to be diagnol
-        return true;
-    }
-
-
-
 
 
 
     public static void main(String[] args) throws IOException{
 
         //Database starts here
-        HashMap<String, matrix> All_Matrices = new HashMap<>();
-        Integer ascii_name = 97;
+        ArrayList<matrix> All_Matrices = new ArrayList<>();
+        int ascii_name = 97;
         //Database ends here
 
 
@@ -355,15 +345,179 @@ public class Main {
 
                     crnt.add(x);
                 }
-                //print_matrix(crnt, rw, cl);
+
+                char nm_ch = (char)ascii_name;
+                String name = Character.toString(nm_ch);
+                System.out.println(name + " = ");
+                print_matrix(crnt, rw, cl);
+                ascii_name++;
 
                 System.out.println("------------------------------------------------------");
                 if (rw!=cl){
+                    if (Check_Ones(crnt, rw, cl)){
+                        matrix mtx = new OnesMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (Check_Null(crnt, rw, cl)){
+                        matrix mtx = new NullMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (cl==1){
+                        matrix mtx = new RowMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (rw==1){
+                        matrix mtx = new ColumnMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else{
+                        matrix mtx = new matrix();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+
+                }
+
+                else{
+                    if (Check_Ones(crnt, rw, cl)){
+                        matrix mtx = new OnesMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (Check_Null(crnt, rw, cl)){
+                        matrix mtx = new NullMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (rw==1){
+                        matrix mtx = new SingletonMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (Check_SkewSymmetric(crnt, rw)){
+                        matrix mtx = new SkewSymmetricMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (Check_Symmetric(crnt, rw)){
+                        if (check_upper(crnt) && check_lower(crnt)){
+                            if (rw==2){
+                                if (Math.abs(crnt.get(0).get(0) - crnt.get(1).get(1)) <= 1e-6){
+                                    if (crnt.get(0).get(0)==1.0){
+                                        matrix mtx = new IndentityMat();
+                                        mtx.setGrid(crnt);
+                                        mtx.setName(name);
+                                        All_Matrices.add(mtx);
+                                        continue;
+                                    }
+                                    else{
+                                        matrix mtx = new ScalarMat();
+                                        mtx.setGrid(crnt);
+                                        mtx.setName(name);
+                                        All_Matrices.add(mtx);
+                                        continue;
+                                    }
+                                }
+                                else{
+                                    matrix mtx = new DiagnolMat();
+                                    mtx.setGrid(crnt);
+                                    mtx.setName(name);
+                                    All_Matrices.add(mtx);
+                                    continue;
+                                }
+                            }
+
+                            else if(rw==3){
+                                if ((Math.abs(crnt.get(0).get(0) - crnt.get(1).get(1)) <= 1e-6) && (Math.abs(crnt.get(0).get(0) - crnt.get(2).get(2)) <= 1e-6)){
+                                    if (crnt.get(0).get(0)==1.0){
+                                        matrix mtx = new IndentityMat();
+                                        mtx.setGrid(crnt);
+                                        mtx.setName(name);
+                                        All_Matrices.add(mtx);
+                                        continue;
+                                    }
+                                    else{
+                                        matrix mtx = new ScalarMat();
+                                        mtx.setGrid(crnt);
+                                        mtx.setName(name);
+                                        All_Matrices.add(mtx);
+                                        continue;
+                                    }
+                                }
+                                else{
+                                    matrix mtx = new DiagnolMat();
+                                    mtx.setGrid(crnt);
+                                    mtx.setName(name);
+                                    All_Matrices.add(mtx);
+                                    continue;
+                                }
+                            }
+                        }
+
+                        else{
+                            matrix mtx = new SymmetricMat();
+                            mtx.setGrid(crnt);
+                            mtx.setName(name);
+                            All_Matrices.add(mtx);
+                            continue;
+                        }
+                    }
+
+                    else if (Determinant(crnt, rw)==0.0){
+                        matrix mtx = new SingularMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else{
+                        matrix mtx = new SquareMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
 
                 }
 
 
+
             }
+
+            System.out.println(All_Matrices.get(0).getMatType());
         }
 
 
