@@ -222,10 +222,99 @@ public class Main {
         return ans;
     }
 
+    public static boolean Is_Same(ArrayList<ArrayList<Double>> Aarr, ArrayList<ArrayList<Double>> Barr, Integer rw, Integer cl){
+        // assumed that rw and cl are same then only this function is called
+        for (int i=0; i<rw; i++){
+            for (int j=0; j<cl; j++){
+                if (Aarr.get(i).get(j)==Barr.get(i).get(j)){
+                    continue;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
 
     public static void main(String[] args) throws IOException{
+
+        //Database starts here
+        HashMap<String, matrix> All_Matrices = new HashMap<>();
+        Integer ascii_name = 97;
+        //Database ends here
+
+
         BufferedReader scn = new BufferedReader(new InputStreamReader(System.in));
 
+        System.out.println("Program Initialized");
+        System.out.println("===========================================================");
+        System.out.println("");
+
+        while (true){
+            System.out.println("Choose the Desired Operation");
+            System.out.println("------------------------------------------------------");
+            System.out.println("1. Input Matrix");
+            System.out.println("2. Create Matrix");
+            System.out.println("3. Change Elements of a Matrix");
+            System.out.println("4. Display all Matrix-type Labels");
+            System.out.println("5. Perform Matrix-Wise Operations");
+            System.out.println("6. Perform Element-Wise Operations");
+            System.out.println("7. Transpose Matrix");
+            System.out.println("8. Inverse Matrix");
+            System.out.println("9. Compute Means");
+            System.out.println("10. Compute Determinants");
+            System.out.println("11. Use Singleton Matrix as Scalars");
+            System.out.println("12. Compute A + A' for Matrix A");
+            System.out.println("13. Compute Eigen Vectors and Values");
+            System.out.println("14. Solve Linear Equation");
+            System.out.println("15. Retrive All Matrices");
+            System.out.println("16. Exit");
+
+            System.out.print("Input: ");
+            Integer Opr_Input = Integer.parseInt(scn.readLine());
+
+            if (Opr_Input==16){
+                System.out.println("Thank You!!");
+                break;
+            }
+
+            else if (Opr_Input>16 || Opr_Input<1){
+                System.out.println("Invalid Operation");
+                System.out.println("------------------------------------------------------");
+                continue;
+            }
+
+            else if (Opr_Input==1){
+                System.out.print("Enter the size of Matrix (row column): ");
+                String[] mat_str = scn.readLine().split(" ");
+                Integer rw = Integer.parseInt(mat_str[0]);
+                Integer cl = Integer.parseInt(mat_str[1]);
+
+                ArrayList<ArrayList<Double>> crnt = new ArrayList<>();
+                System.out.println("Enter the Matrix: ");
+                for (int i=0; i<rw; i++){
+                    ArrayList<Double> x = new ArrayList<>();
+                    String[] ln1 = scn.readLine().split(" ");
+
+                    for (int j=0; j<cl; j++){
+                        x.add(Double.parseDouble(ln1[j]));
+                    }
+
+                    crnt.add(x);
+                }
+                //print_matrix(crnt, rw, cl);
+
+                System.out.println("------------------------------------------------------");
+                if (rw!=cl){
+
+                }
+
+
+            }
+        }
 
 
 
@@ -236,7 +325,7 @@ public class Main {
 
 
 
-        scn.close();
+        //scn.close(); uncomment after completion
 
 
 
