@@ -1470,6 +1470,207 @@ public class Main {
 
             }
 
+            else if (Opr_Input==5){
+                System.out.println("Select Operation: ");
+                System.out.println("1. Addition");
+                System.out.println("2. Subtraction");
+                System.out.println("3. Multiplication");
+                System.out.println("4. Division");
+
+                System.out.print("Option: ");
+
+                Integer opt_in = Integer.parseInt(scn.readLine());
+
+                if (opt_in>4 || opt_in<1){
+                    System.out.println("Invalid Operation");
+                    continue;
+                }
+
+                else if (opt_in==1){
+                    System.out.println("Chose Matrices: ");
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        System.out.print(All_Matrices.get(i).getName() + " ");
+                    }
+                    System.out.println("");
+                    String[] x = scn.readLine().split(" ");
+                    matrix Acrnt = null;
+                    matrix Bcrnt = null;
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[0].equals(All_Matrices.get(i).getName())){
+                            Acrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Acrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[1].equals(All_Matrices.get(i).getName())){
+                            Bcrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Bcrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    if ((Acrnt.getRow() != Bcrnt.getRow()) || (Acrnt.getColumn() != Bcrnt.getColumn())){
+                        System.out.println("Operation cannot be Computed");
+                        continue;
+                    }
+                    ArrayList<ArrayList<Double>> ans = Addition(Acrnt.getGrid(), Bcrnt.getGrid(), Acrnt.getRow(), Acrnt.getColumn());
+                    System.out.println("ans = ");
+                    print_matrix(ans, Acrnt.getRow(), Acrnt.getColumn());
+                }
+
+                else if (opt_in==2){
+                    System.out.println("Chose Matrices: ");
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        System.out.print(All_Matrices.get(i).getName() + " ");
+                    }
+                    System.out.println("");
+                    String[] x = scn.readLine().split(" ");
+                    matrix Acrnt = null;
+                    matrix Bcrnt = null;
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[0].equals(All_Matrices.get(i).getName())){
+                            Acrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Acrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[1].equals(All_Matrices.get(i).getName())){
+                            Bcrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Bcrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    if ((Acrnt.getRow() != Bcrnt.getRow()) || (Acrnt.getColumn() != Bcrnt.getColumn())){
+                        System.out.println("Operation cannot be Computed");
+                        continue;
+                    }
+                    ArrayList<ArrayList<Double>> Bchng = Scalar_Multiplication(Bcrnt.getGrid(), Bcrnt.getRow(), Bcrnt.getColumn(), -1);
+                    ArrayList<ArrayList<Double>> ans = Addition(Acrnt.getGrid(), Bchng, Acrnt.getRow(), Acrnt.getColumn());
+                    System.out.println("ans = ");
+                    print_matrix(ans, Acrnt.getRow(), Acrnt.getColumn());
+                }
+
+                else if (opt_in==3){
+                    System.out.println("Chose Matrices: ");
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        System.out.print(All_Matrices.get(i).getName() + " ");
+                    }
+                    System.out.println("");
+                    String[] x = scn.readLine().split(" ");
+                    matrix Acrnt = null;
+                    matrix Bcrnt = null;
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[0].equals(All_Matrices.get(i).getName())){
+                            Acrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Acrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[1].equals(All_Matrices.get(i).getName())){
+                            Bcrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Bcrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    if (Acrnt.getColumn() != Bcrnt.getRow()){
+                        System.out.println("Operation cannot be Computed");
+                        continue;
+                    }
+                    ArrayList<ArrayList<Double>> ans = Vector_Multiplication(Acrnt.getGrid(), Bcrnt.getGrid(), Acrnt.getRow(), Acrnt.getColumn(), Bcrnt.getRow(), Bcrnt.getColumn());
+                    System.out.println("ans = ");
+                    print_matrix(ans, Acrnt.getRow(), Bcrnt.getColumn());
+                }
+
+                else {
+                    System.out.println("Chose Matrices: ");
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        System.out.print(All_Matrices.get(i).getName() + " ");
+                    }
+                    System.out.println("");
+                    String[] x = scn.readLine().split(" ");
+                    matrix Acrnt = null;
+                    matrix Bcrnt = null;
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[0].equals(All_Matrices.get(i).getName())){
+                            Acrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Acrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[1].equals(All_Matrices.get(i).getName())){
+                            Bcrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Bcrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    if (Bcrnt.getRow()!=Bcrnt.getColumn()){
+                        System.out.println("Operation cannot be Computed");
+                        continue;
+                    }
+
+                    if (Determinant(Bcrnt.getGrid(), Bcrnt.getRow())==0.0){
+                        System.out.println("Operation cannot be Computed");
+                        continue;
+                    }
+
+                    if (Acrnt.getColumn() != Bcrnt.getRow()){
+                        System.out.println("Operation cannot be Computed");
+                        continue;
+                    }
+                    ArrayList<ArrayList<Double>> Bchng = Inverse_Matrix(Bcrnt.getGrid(), Bcrnt.getRow());
+                    ArrayList<ArrayList<Double>> ans = Vector_Multiplication(Acrnt.getGrid(), Bchng, Acrnt.getRow(), Acrnt.getColumn(), Bcrnt.getRow(), Bcrnt.getColumn());
+                    System.out.println("ans = ");
+                    print_matrix(ans, Acrnt.getRow(), Bcrnt.getColumn());
+                }
+            }
+
         }
 
 
