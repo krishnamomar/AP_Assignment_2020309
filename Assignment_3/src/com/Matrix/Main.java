@@ -15,6 +15,13 @@ public class Main {
         }
     }
 
+    public static Double Give_Random() {
+        List<Double> givenList = Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 0.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0, -1.0);
+        Random rand = new Random();
+        Double randomElement = givenList.get(rand.nextInt(givenList.size()));
+        return randomElement;
+    }
+
     public static boolean check_upper(ArrayList<ArrayList<Double>> grd){
         for(int i=0; i<grd.size(); i++){
             for (int j=0; j<grd.get(0).size(); j++){
@@ -518,8 +525,460 @@ public class Main {
             }
 
             else if (Opr_Input==2){
-                System.out.println("Enter the type of Matrix: ");
+                System.out.println("All Matrix Types: ");
+                System.out.println("1. Rectangular Matrix");
+                System.out.println("2. Row Matrix");
+                System.out.println("3. Column Matrix");
+                System.out.println("4. Square Matrix");
+                System.out.println("5. Symmetric Matrix");
+                System.out.println("6. Skew-Symmetric Matrix");
+                System.out.println("7. Upper Triangular Matrix");
+                System.out.println("8. Lower Triangular Matrix");
+                System.out.println("9. Singular Matrix");
+                System.out.println("10. Diagonal Matrix");
+                System.out.println("11. Scalar Matrix");
+                System.out.println("12. Identity Matrix");
+                System.out.println("13. Singleton Matrix");
+                System.out.println("14. Ones Matrix");
+                System.out.println("15. Null MAtrix");
+                System.out.print("Enter ID: ");
+                Integer Mt_id = Integer.parseInt(scn.readLine());
+
+                ArrayList<ArrayList<Double>> crnt = new ArrayList<>();
+                Integer rw;
+                Integer cl;
+                String name;
+
+                if (Mt_id>15 || Mt_id<1){
+                    System.out.println("Wrong ID Entered!");
+                    continue;
+                }
+
+                else if (Mt_id==1){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=2;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            x.add(Give_Random());
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==2){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=1;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            x.add(Give_Random());
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==3){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=1;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            x.add(Give_Random());
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==4){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            x.add(Give_Random());
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==5){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    Double Ma = Give_Random();
+                    Double Mb = Give_Random();
+                    Double Mc = Give_Random();
+                    Double Md = Give_Random();
+                    Double Me = Give_Random();
+                    Double Mf = Give_Random();
+                    ArrayList<Double> x = new ArrayList<>();
+                    ArrayList<Double> y = new ArrayList<>();
+                    ArrayList<Double> z = new ArrayList<>();
+                    x.add(Ma);
+                    x.add(Md);
+                    x.add(Me);
+                    y.add(Md);
+                    y.add(Mb);
+                    y.add(Mf);
+                    z.add(Me);
+                    z.add(Mf);
+                    z.add(Mc);
+
+                    crnt.add(x);
+                    crnt.add(y);
+                    crnt.add(z);
+                }
+
+                else if (Mt_id==6){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    Double Ma = Give_Random();
+                    Double Mb = Give_Random();
+                    Double Mc = Give_Random();
+
+                    ArrayList<Double> x = new ArrayList<>();
+                    ArrayList<Double> y = new ArrayList<>();
+                    ArrayList<Double> z = new ArrayList<>();
+                    x.add(0.0);
+                    x.add(Ma);
+                    x.add(Mb);
+                    y.add(-1*(Ma));
+                    y.add(0.0);
+                    y.add(Mc);
+                    z.add(-1*(Mb));
+                    z.add(-1*(Mc));
+                    z.add(0.0);
+
+                    crnt.add(x);
+                    crnt.add(y);
+                    crnt.add(z);
+                }
+
+                else if (Mt_id==7){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            if (i>j){
+                                x.add(0.0);
+                            }
+                            else {
+                                x.add(Give_Random());
+                            }
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==8){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            if (i<j){
+                                x.add(0.0);
+                            }
+                            else {
+                                x.add(Give_Random());
+                            }
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==9 || Mt_id==15){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            x.add(0.0);
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==10){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            if (i==j){
+                                x.add(Give_Random());
+                            }
+                            else{
+                                x.add(0.0);
+                            }
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==11){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    Double Mv = Give_Random();
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            if (i==j){
+                                x.add(Mv);
+                            }
+                            else{
+                                x.add(0.0);
+                            }
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==12){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            if (i==j){
+                                x.add(1.0);
+                            }
+                            else{
+                                x.add(0.0);
+                            }
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                else if (Mt_id==13){
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=1;
+                    cl=1;
+                    ArrayList<Double> x = new ArrayList<>();
+                    x.add(Give_Random());
+                    crnt.add(x);
+                }
+
+                else {
+                    char nm_ch = (char)ascii_name;
+                    name = Character.toString(nm_ch);
+                    ascii_name++;
+                    rw=3;
+                    cl=3;
+                    for (int i=0; i<rw; i++){
+                        ArrayList<Double> x = new ArrayList<>();
+                        for (int j=0; j<cl; j++){
+                            x.add(1.0);
+                        }
+                        crnt.add(x);
+                    }
+                }
+
+                System.out.println(name + " = ");
+                print_matrix(crnt, rw, cl);
+
+                System.out.println("------------------------------------------------------");
+                if (rw!=cl){
+                    if (Check_Ones(crnt, rw, cl)){
+                        matrix mtx = new OnesMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (Check_Null(crnt, rw, cl)){
+                        matrix mtx = new NullMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (cl==1){
+                        matrix mtx = new RowMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (rw==1){
+                        matrix mtx = new ColumnMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else{
+                        matrix mtx = new matrix();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+
+                }
+
+                else{
+                    if (Check_Ones(crnt, rw, cl)){
+                        matrix mtx = new OnesMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (Check_Null(crnt, rw, cl)){
+                        matrix mtx = new NullMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (rw==1){
+                        matrix mtx = new SingletonMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (Check_SkewSymmetric(crnt, rw)){
+                        matrix mtx = new SkewSymmetricMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else if (Check_Symmetric(crnt, rw)){
+                        if (check_upper(crnt) && check_lower(crnt)){
+                            if (rw==2){
+                                if (Math.abs(crnt.get(0).get(0) - crnt.get(1).get(1)) <= 1e-6){
+                                    if (crnt.get(0).get(0)==1.0){
+                                        matrix mtx = new IndentityMat();
+                                        mtx.setGrid(crnt);
+                                        mtx.setName(name);
+                                        All_Matrices.add(mtx);
+                                        continue;
+                                    }
+                                    else{
+                                        matrix mtx = new ScalarMat();
+                                        mtx.setGrid(crnt);
+                                        mtx.setName(name);
+                                        All_Matrices.add(mtx);
+                                        continue;
+                                    }
+                                }
+                                else{
+                                    matrix mtx = new DiagnolMat();
+                                    mtx.setGrid(crnt);
+                                    mtx.setName(name);
+                                    All_Matrices.add(mtx);
+                                    continue;
+                                }
+                            }
+
+                            else if(rw==3){
+                                if ((Math.abs(crnt.get(0).get(0) - crnt.get(1).get(1)) <= 1e-6) && (Math.abs(crnt.get(0).get(0) - crnt.get(2).get(2)) <= 1e-6)){
+                                    if (crnt.get(0).get(0)==1.0){
+                                        matrix mtx = new IndentityMat();
+                                        mtx.setGrid(crnt);
+                                        mtx.setName(name);
+                                        All_Matrices.add(mtx);
+                                        continue;
+                                    }
+                                    else{
+                                        matrix mtx = new ScalarMat();
+                                        mtx.setGrid(crnt);
+                                        mtx.setName(name);
+                                        All_Matrices.add(mtx);
+                                        continue;
+                                    }
+                                }
+                                else{
+                                    matrix mtx = new DiagnolMat();
+                                    mtx.setGrid(crnt);
+                                    mtx.setName(name);
+                                    All_Matrices.add(mtx);
+                                    continue;
+                                }
+                            }
+                        }
+
+                        else{
+                            matrix mtx = new SymmetricMat();
+                            mtx.setGrid(crnt);
+                            mtx.setName(name);
+                            All_Matrices.add(mtx);
+                            continue;
+                        }
+                    }
+
+                    else if (Determinant(crnt, rw)==0.0){
+                        matrix mtx = new SingularMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+                    else{
+                        matrix mtx = new SquareMat();
+                        mtx.setGrid(crnt);
+                        mtx.setName(name);
+                        All_Matrices.add(mtx);
+                        continue;
+                    }
+
+
+                }
             }
+
         }
 
 
