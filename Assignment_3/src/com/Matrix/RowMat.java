@@ -26,12 +26,12 @@ public class RowMat extends matrix{
 
     @Override
     public void setGrid(ArrayList<ArrayList<Double>> grd){
-        this.row = grd.size();
-        this.column = 1;
+        this.row = 1;
+        this.column = grd.get(0).size();
 
         ArrayList<Double> crnt = new ArrayList<>();
-        for (int i=0; i<row; i++){
-            crnt.add(grd.get(i).get(0));
+        for (int i=0; i<column; i++){
+            crnt.add(grd.get(0).get(i));
         }
 
         this.grid = crnt;
@@ -41,13 +41,11 @@ public class RowMat extends matrix{
     public ArrayList<ArrayList<Double>> getGrid(){
         ArrayList<ArrayList<Double>> crnt = new ArrayList<>();
 
-        for (int i=0; i<row; i++){
-            ArrayList<Double> x = new ArrayList<>();
-            crnt.add(x);
-        }
+        ArrayList<Double> x = new ArrayList<>();
+        crnt.add(x);
 
         for (int i=0; i<row; i++){
-            crnt.get(i).add(grid.get(i));
+            crnt.get(0).add(grid.get(i));
         }
 
         return crnt;
@@ -55,6 +53,6 @@ public class RowMat extends matrix{
 
     @Override
     public Integer getMatType(){
-        return 2;
+        return 3;
     }
 }
