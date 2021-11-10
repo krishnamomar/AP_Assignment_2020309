@@ -2272,17 +2272,25 @@ public class Main {
 
                 Double X = a+d;
                 Double D = (a+d)*(a+d) - 4*((a*d) - (b*c));
-                System.out.println("EigenValues are: ");
+                System.out.println("Eigen Values are: ");
                 if (D>=0){
                     Double Dd = Math.pow(D, 0.5);
                     System.out.println((X+Dd)/2 + " and " + (X-Dd)/2);
+                    System.out.println("Eigen Vectors are: ");
+                    System.out.println((a-((X+Dd)/2)) + " " +c);
+                    System.out.println(b+" " +(d-((X-Dd)/2)));
+                    continue;
                 }
                 else {
                     Double Dd = Math.pow((-1)*D, 0.5);
                     System.out.println((X/2) + " + i" + (Dd/2) + " and " + (X/2) + " - i" + (Dd/2));
+                    System.out.println("Eigen Vectors are: ");
+                    System.out.println((X/2)+" "+(Dd/2));
+                    System.out.println((-1*(Dd/2))+" "+(X/2));
+                    continue;
                 }
 
-                System.out.println("Unable to Compute EigenVectors");
+                //System.out.println("Unable to Compute EigenVectors");
 
             }
 
