@@ -1913,6 +1913,68 @@ public class Main {
                 }
             }
 
+            else if (Opr_Input==14){
+                System.out.println("Choose a Square Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt_sq = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt_sq = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt_sq == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                if (crnt_sq.getColumn()!=crnt_sq.getRow()){
+                    System.out.println("Not a Square Matrix!!");
+                    continue;
+                }
+
+                System.out.println("Choose a Column Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                x = scn.readLine();
+                matrix crnt_clm = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt_clm = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt_clm == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                if ((crnt_clm.getRow() != crnt_sq.getRow()) && crnt_clm.getColumn()!=1){
+                    System.out.println("Not a correct matrix!!");
+                    continue;
+                }
+
+                if (Determinant(crnt_sq.getGrid(), crnt_sq.getRow()) == 0.0){
+                    System.out.println("No Solution !!");
+                    continue;
+                }
+
+                ArrayList<ArrayList<Double>> new_sq_g = Inverse_Matrix(crnt_sq.getGrid(), crnt_sq.getRow());
+                ArrayList<ArrayList<Double>> ans = Vector_Multiplication(new_sq_g, crnt_clm.getGrid(), crnt_sq.getRow(), crnt_sq.getColumn(), crnt_clm.getRow(), crnt_clm.getColumn());
+                System.out.println("ans = ");
+                print_matrix(ans, crnt_clm.getRow(), crnt_clm.getColumn());
+            }
+
 
 
         }
