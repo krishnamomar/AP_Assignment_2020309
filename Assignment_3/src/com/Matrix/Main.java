@@ -172,7 +172,7 @@ public class Main {
         return ans;
     }
 
-    public static ArrayList<ArrayList<Double>> Scalar_Multiplication(ArrayList<ArrayList<Double>> grd, Integer rw, Integer cl, Integer scalar){
+    public static ArrayList<ArrayList<Double>> Scalar_Multiplication(ArrayList<ArrayList<Double>> grd, Integer rw, Integer cl, Double scalar){
         ArrayList<ArrayList<Double>> ans = new ArrayList<>();
         for (int i=0; i<rw; i++){
             ArrayList<Double> x = new ArrayList<>();
@@ -315,7 +315,7 @@ public class Main {
         // should already be square
 
         ArrayList<ArrayList<Double>> chk1 = Transpose(grd, sz, sz);
-        ArrayList<ArrayList<Double>> chk2 = Scalar_Multiplication(grd, sz, sz, -1);
+        ArrayList<ArrayList<Double>> chk2 = Scalar_Multiplication(grd, sz, sz, -1.0);
 
         return Is_Same(chk1, chk2, sz, sz);
     }
@@ -1604,7 +1604,7 @@ public class Main {
                         System.out.println("Operation cannot be Computed");
                         continue;
                     }
-                    ArrayList<ArrayList<Double>> Bchng = Scalar_Multiplication(Bcrnt.getGrid(), Bcrnt.getRow(), Bcrnt.getColumn(), -1);
+                    ArrayList<ArrayList<Double>> Bchng = Scalar_Multiplication(Bcrnt.getGrid(), Bcrnt.getRow(), Bcrnt.getColumn(), -1.0);
                     ArrayList<ArrayList<Double>> ans = Addition(Acrnt.getGrid(), Bchng, Acrnt.getRow(), Acrnt.getColumn());
                     System.out.println("ans = ");
                     print_matrix(ans, Acrnt.getRow(), Acrnt.getColumn());
@@ -1973,6 +1973,182 @@ public class Main {
                 ArrayList<ArrayList<Double>> ans = Vector_Multiplication(new_sq_g, crnt_clm.getGrid(), crnt_sq.getRow(), crnt_sq.getColumn(), crnt_clm.getRow(), crnt_clm.getColumn());
                 System.out.println("ans = ");
                 print_matrix(ans, crnt_clm.getRow(), crnt_clm.getColumn());
+            }
+
+            else if (Opr_Input==6){
+                System.out.println("Chose Element wise Operation: ");
+                System.out.println("1. Multiplication");
+                System.out.println("2. Division");
+                System.out.print("Operation: ");
+                Integer mi_opr = Integer.parseInt(scn.readLine());
+
+                if (mi_opr==1){
+                    System.out.println("Chose Matrices: ");
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        System.out.print(All_Matrices.get(i).getName() + " ");
+                    }
+                    System.out.println("");
+                    String[] x = scn.readLine().split(" ");
+                    matrix Acrnt = null;
+                    matrix Bcrnt = null;
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[0].equals(All_Matrices.get(i).getName())){
+                            Acrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Acrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[1].equals(All_Matrices.get(i).getName())){
+                            Bcrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Bcrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    if (Acrnt.getRow()!=Bcrnt.getRow() || Acrnt.getColumn()!=Bcrnt.getColumn()){
+                        System.out.println("Cannot compute matrices with different sizes");
+                    }
+
+                    ArrayList<ArrayList<Double>> ans = Element_Multiplication(Acrnt.getGrid(), Bcrnt.getGrid(), Acrnt.getRow(), Acrnt.getColumn());
+                    System.out.println("ans = ");
+                    print_matrix(ans, Acrnt.getRow(), Acrnt.getColumn());
+                }
+
+                if (mi_opr==2){
+                    System.out.println("Chose Matrices: ");
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        System.out.print(All_Matrices.get(i).getName() + " ");
+                    }
+                    System.out.println("");
+                    String[] x = scn.readLine().split(" ");
+                    matrix Acrnt = null;
+                    matrix Bcrnt = null;
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[0].equals(All_Matrices.get(i).getName())){
+                            Acrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Acrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    for (int i=0; i<All_Matrices.size(); i++){
+                        if (x[1].equals(All_Matrices.get(i).getName())){
+                            Bcrnt = All_Matrices.get(i);
+                            break;
+                        }
+                    }
+
+                    if (Bcrnt == null){
+                        System.out.println("No such matrix with given Name!!");
+                        continue;
+                    }
+
+                    if (Acrnt.getRow()!=Bcrnt.getRow() || Acrnt.getColumn()!=Bcrnt.getColumn()){
+                        System.out.println("Cannot compute matrices with different sizes");
+                    }
+
+                    ArrayList<ArrayList<Double>> ans = Element_Division(Acrnt.getGrid(), Bcrnt.getGrid(), Acrnt.getRow(), Acrnt.getColumn());
+                    System.out.println("ans = ");
+                    print_matrix(ans, Acrnt.getRow(), Acrnt.getColumn());
+                }
+
+                else{
+                    System.out.println("No such operation!!");
+                    continue;
+                }
+            }
+
+            else if (Opr_Input==11){
+                System.out.println("Choose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                System.out.println("Choose a Singleton Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                x = scn.readLine();
+                matrix crnt_sng = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt_sng = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt_sng == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                if ((crnt_sng.getRow() != 1) && crnt_sng.getColumn()!=1){
+                    System.out.println("Not a correct matrix!!");
+                    continue;
+                }
+
+                Double my_scalar = crnt_sng.getGrid().get(0).get(0);
+
+                System.out.println("Chose Operation: ");
+                System.out.println("1. Scalar Multiplication");
+                System.out.println("2. Scalar Division");
+                System.out.print("Operation: ");
+                Integer mi_op = Integer.parseInt(scn.readLine());
+
+                if (mi_op==1){
+                    ArrayList<ArrayList<Double>> ans = Scalar_Multiplication(crnt.getGrid(), crnt.getRow(), crnt.getColumn(), my_scalar);
+                    System.out.println("ans = ");
+                    print_matrix(ans, crnt.getRow(), crnt.getColumn());
+                    continue;
+                }
+                else if (mi_op==2){
+                    my_scalar = 1/my_scalar;
+                    ArrayList<ArrayList<Double>> ans = Scalar_Multiplication(crnt.getGrid(), crnt.getRow(), crnt.getColumn(), my_scalar);
+                    System.out.println("ans = ");
+                    print_matrix(ans, crnt.getRow(), crnt.getColumn());
+                    continue;
+                }
+
+                else{
+                    System.out.println("Wrong operation!!");
+                    continue;
+                }
+
+
+
             }
 
 
