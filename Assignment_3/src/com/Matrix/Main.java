@@ -283,13 +283,9 @@ public class Main {
         return Is_Same(chk1, chk2, sz, sz);
     }
 
-    public static ArrayList<Integer> Check_Labels(matrix crnt){
+    public static ArrayList<Integer> Check_Labels(ArrayList<ArrayList<Double>> grd, Integer bsc, Integer rw, Integer cl){
         ArrayList<Integer> label_types = new ArrayList<>();
 
-        Integer bsc = crnt.getMatType();
-        ArrayList<ArrayList<Double>> grd = crnt.getGrid();
-        Integer rw = crnt.getRow();
-        Integer cl = crnt.getColumn();
 
         if (bsc==1){
             label_types.add(1);
@@ -470,6 +466,17 @@ public class Main {
 
 
         return label_types;
+    }
+
+    public static boolean Check_Array_all(ArrayList<Integer> init, ArrayList<Integer> fnl){
+        for (int i=0; i<init.size(); i++){
+            Integer xx = init.get(i);
+            if (!fnl.contains(xx)){
+                return false;
+            }
+        }
+
+        return true;
     }
 
 
@@ -1188,7 +1195,12 @@ public class Main {
                     continue;
                 }
 
-                ArrayList<Integer> label_types = Check_Labels(crnt);
+                ArrayList<ArrayList<Double>> grd = crnt.getGrid();
+                Integer bsc = crnt.getMatType();
+                Integer rw = crnt.getRow();
+                Integer cl = crnt.getColumn();
+
+                ArrayList<Integer> label_types = Check_Labels(grd, bsc, rw, cl);
 
                 for (int i=0; i< label_types.size(); i++){
                     Integer xxi = label_types.get(i);
@@ -1238,6 +1250,223 @@ public class Main {
                         System.out.println("Lower-Triangular Matrix");
                     }
                 }
+
+            }
+
+            else if (Opr_Input==3){
+                System.out.println("Chose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+                ArrayList<ArrayList<Double>> grd_init = crnt.getGrid();
+                Integer bsc_init = crnt.getMatType();
+                Integer rw = crnt.getRow();
+                Integer cl = crnt.getColumn();
+
+                ArrayList<Integer> label_types_initial = Check_Labels(grd_init, bsc_init, rw, cl);
+
+                System.out.println("Enter New Matrix: ");
+
+                ArrayList<ArrayList<Double>> grd_new = new ArrayList<>();
+
+                for (int i=0; i<rw; i++){
+                    ArrayList<Double> xrr = new ArrayList<>();
+                    String[] ln1 = scn.readLine().split(" ");
+
+                    for (int j=0; j<cl; j++){
+                        xrr.add(Double.parseDouble(ln1[j]));
+                    }
+
+                    grd_new.add(xrr);
+                }
+
+                ArrayList<Integer> label_types_new = new ArrayList<>();
+                if (rw!=cl){
+                    if (Check_Ones(grd_new, rw, cl)){
+                        matrix mtx = new OnesMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else if (Check_Null(grd_new, rw, cl)){
+                        matrix mtx = new NullMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else if (cl==1){
+                        matrix mtx = new RowMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else if (rw==1){
+                        matrix mtx = new ColumnMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else{
+                        matrix mtx = new matrix();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+
+                }
+
+                else{
+                    if (Check_Ones(grd_new, rw, cl)){
+                        matrix mtx = new OnesMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else if (Check_Null(grd_new, rw, cl)){
+                        matrix mtx = new NullMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else if (rw==1){
+                        matrix mtx = new SingletonMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else if (Check_SkewSymmetric(grd_new, rw)){
+                        matrix mtx = new SkewSymmetricMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else if (Check_Symmetric(grd_new, rw)){
+                        if (check_upper(grd_new) && check_lower(grd_new)){
+                            if (rw==2){
+                                if (Math.abs(grd_new.get(0).get(0) - grd_new.get(1).get(1)) <= 1e-6){
+                                    if (grd_new.get(0).get(0)==1.0){
+                                        matrix mtx = new IndentityMat();
+                                        mtx.setGrid(grd_new);
+                                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                                        //All_Matrices.add(mtx);
+                                        //continue;
+                                    }
+                                    else{
+                                        matrix mtx = new ScalarMat();
+                                        mtx.setGrid(grd_new);
+                                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                                        //All_Matrices.add(mtx);
+                                        //continue;
+                                    }
+                                }
+                                else{
+                                    matrix mtx = new DiagnolMat();
+                                    mtx.setGrid(grd_new);
+                                    label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                                    //All_Matrices.add(mtx);
+                                    //continue;
+                                }
+                            }
+
+                            else if(rw==3){
+                                if ((Math.abs(grd_new.get(0).get(0) - grd_new.get(1).get(1)) <= 1e-6) && (Math.abs(grd_new.get(0).get(0) - grd_new.get(2).get(2)) <= 1e-6)){
+                                    if (grd_new.get(0).get(0)==1.0){
+                                        matrix mtx = new IndentityMat();
+                                        mtx.setGrid(grd_new);
+                                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                                        //All_Matrices.add(mtx);
+                                        //continue;
+                                    }
+                                    else{
+                                        matrix mtx = new ScalarMat();
+                                        mtx.setGrid(grd_new);
+                                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                                        //All_Matrices.add(mtx);
+                                        //continue;
+                                    }
+                                }
+                                else{
+                                    matrix mtx = new DiagnolMat();
+                                    mtx.setGrid(grd_new);
+                                    label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                                    //All_Matrices.add(mtx);
+                                    //continue;
+                                }
+                            }
+                        }
+
+                        else{
+                            matrix mtx = new SymmetricMat();
+                            mtx.setGrid(grd_new);
+                            label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                            //All_Matrices.add(mtx);
+                            //continue;
+                        }
+                    }
+
+                    else if (Determinant(grd_new, rw)==0.0){
+                        matrix mtx = new SingularMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+                    else{
+                        matrix mtx = new SquareMat();
+                        mtx.setGrid(grd_new);
+                        label_types_new = Check_Labels(grd_new, mtx.getMatType(), rw, cl);
+                        //All_Matrices.add(mtx);
+                        //continue;
+                    }
+
+
+                }
+
+                if (!Check_Array_all(label_types_initial, label_types_new)){
+                    System.out.println("Cannot change matrix label");
+                    continue;
+                }
+
+                crnt.setGrid(grd_new);
+
+                System.out.println(crnt.getName() + " = ");
+                print_matrix(crnt.getGrid(), rw, cl);
+
+
 
             }
 
