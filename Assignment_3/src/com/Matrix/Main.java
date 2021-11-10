@@ -1770,6 +1770,149 @@ public class Main {
                 print_matrix(ans, crnt.getColumn(), crnt.getRow());
             }
 
+            else if (Opr_Input==10){
+                System.out.println("Chose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                if (crnt.getColumn()!=crnt.getRow()){
+                    System.out.println("Cannot compute Determinant!!");
+                    continue;
+                }
+
+                System.out.println("ans = " + Determinant(crnt.getGrid(), crnt.getRow()));
+            }
+
+            else if (Opr_Input==12){
+                System.out.println("Chose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                if (crnt.getColumn()!=crnt.getRow()){
+                    System.out.println("Cannot compute A + A' !!");
+                    continue;
+                }
+
+                ArrayList<ArrayList<Double>> crnt_trp = Transpose(crnt.getGrid(), crnt.getRow(), crnt.getColumn());
+
+                ArrayList<ArrayList<Double>> ans = Addition(crnt.getGrid(), crnt_trp, crnt.getRow(), crnt.getColumn());
+
+                System.out.println("ans = ");
+                print_matrix(ans, crnt.getColumn(), crnt.getRow());
+            }
+
+            else if (Opr_Input==15){
+                System.out.println("All Matrix Types: ");
+                System.out.println("1. Rectangular Matrix");
+                System.out.println("2. Row Matrix");
+                System.out.println("3. Column Matrix");
+                System.out.println("4. Square Matrix");
+                System.out.println("5. Symmetric Matrix");
+                System.out.println("6. Skew-Symmetric Matrix");
+                System.out.println("7. Upper Triangular Matrix");
+                System.out.println("8. Lower Triangular Matrix");
+                System.out.println("9. Singular Matrix");
+                System.out.println("10. Diagonal Matrix");
+                System.out.println("11. Scalar Matrix");
+                System.out.println("12. Identity Matrix");
+                System.out.println("13. Singleton Matrix");
+                System.out.println("14. Ones Matrix");
+                System.out.println("15. Null MAtrix");
+                System.out.print("Enter ID: ");
+                Integer Mt_id = Integer.parseInt(scn.readLine());
+                Integer real_id = 0;
+                if (Mt_id==1){
+                    real_id = 1;
+                }
+                else if(Mt_id==2){
+                    real_id = 2;
+                }
+                else if(Mt_id==3){
+                    real_id = 3;
+                }
+                else if(Mt_id==4){
+                    real_id = 6;
+                }
+                else if(Mt_id==5){
+                    real_id = 9;
+                }
+                else if(Mt_id==6){
+                    real_id = 13;
+                }
+                else if(Mt_id==7){
+                    real_id = 14;
+                }
+                else if(Mt_id==8){
+                    real_id = 15;
+                }
+                else if(Mt_id==9){
+                    real_id = 7;
+                }
+                else if(Mt_id==10){
+                    real_id = 10;
+                }
+                else if(Mt_id==11){
+                    real_id = 11;
+                }
+                else if(Mt_id==12){
+                    real_id = 12;
+                }
+                else if(Mt_id==13){
+                    real_id = 8;
+                }
+                else if(Mt_id==14){
+                    real_id = 4;
+                }
+                else if(Mt_id==15){
+                    real_id = 5;
+                }
+                else {
+                    System.out.println("Wrong type entered!!");
+                    continue;
+                }
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    matrix crnt = All_Matrices.get(i);
+                    ArrayList<Integer> lbl = Check_Labels(crnt.getGrid(), crnt.getMatType(), crnt.getRow(), crnt.getColumn());
+                    if (lbl.contains(real_id)){
+                        System.out.println(crnt.getName() + " = ");
+                        print_matrix(crnt.getGrid(), crnt.getRow(), crnt.getColumn());
+                    }
+                }
+            }
+
         }
 
 
