@@ -361,10 +361,10 @@ public class Main {
             else{
                 label_types.add(1);
                 if (cl==1){
-                    label_types.add(2);
+                    label_types.add(3);
                 }
                 if (rw==1){
-                    label_types.add(3);
+                    label_types.add(2);
                 }
 
             }
@@ -388,10 +388,10 @@ public class Main {
             else{
                 label_types.add(1);
                 if (cl==1){
-                    label_types.add(2);
+                    label_types.add(3);
                 }
                 if (rw==1){
-                    label_types.add(3);
+                    label_types.add(2);
                 }
             }
         }
@@ -610,7 +610,7 @@ public class Main {
                     }
 
                     else if (cl==1){
-                        matrix mtx = new RowMat();
+                        matrix mtx = new ColumnMat();
                         mtx.setGrid(crnt);
                         mtx.setName(name);
                         All_Matrices.add(mtx);
@@ -618,7 +618,7 @@ public class Main {
                     }
 
                     else if (rw==1){
-                        matrix mtx = new ColumnMat();
+                        matrix mtx = new RowMat();
                         mtx.setGrid(crnt);
                         mtx.setName(name);
                         All_Matrices.add(mtx);
@@ -801,7 +801,7 @@ public class Main {
                     }
                 }
 
-                else if (Mt_id==2){
+                else if (Mt_id==3){
                     char nm_ch = (char)ascii_name;
                     name = Character.toString(nm_ch);
                     ascii_name++;
@@ -816,7 +816,7 @@ public class Main {
                     }
                 }
 
-                else if (Mt_id==3){
+                else if (Mt_id==2){
                     char nm_ch = (char)ascii_name;
                     name = Character.toString(nm_ch);
                     ascii_name++;
@@ -1068,7 +1068,7 @@ public class Main {
                     }
 
                     else if (cl==1){
-                        matrix mtx = new RowMat();
+                        matrix mtx = new ColumnMat();
                         mtx.setGrid(crnt);
                         mtx.setName(name);
                         All_Matrices.add(mtx);
@@ -1076,7 +1076,7 @@ public class Main {
                     }
 
                     else if (rw==1){
-                        matrix mtx = new ColumnMat();
+                        matrix mtx = new RowMat();
                         mtx.setGrid(crnt);
                         mtx.setName(name);
                         All_Matrices.add(mtx);
