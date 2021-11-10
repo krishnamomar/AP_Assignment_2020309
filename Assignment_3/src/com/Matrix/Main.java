@@ -2151,22 +2151,124 @@ public class Main {
 
             }
 
+            else if (Opr_Input==9){
+                System.out.println("Chose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                System.out.println("Kind of Mean Require: ");
+                System.out.println("1. Row wise Means");
+                System.out.println("2. Column wise Means");
+                System.out.println("3. Mean of all elements");
+                System.out.print("Enter requirement: ");
+                Integer mn_ty = Integer.parseInt(scn.readLine());
+
+                if (mn_ty==1){
+                    ArrayList<Double> anss = new ArrayList<>();
+
+                    for (int irr=0; irr< crnt.getRow(); irr++){
+                        double tmp = 0.0;
+                        for (int jc=0; jc< crnt.getColumn(); jc++){
+                            tmp += crnt.getGrid().get(irr).get(jc);
+                        }
+                        tmp = tmp/ crnt.getColumn();
+                        anss.add(tmp);
+                    }
+                    System.out.println("ans = ");
+                    for (int i=0; i< crnt.getRow(); i++){
+                        System.out.println(anss.get(i));
+                    }
+                    continue;
+                }
+
+                else if (mn_ty==2){
+                    ArrayList<Double> anss = new ArrayList<>();
+
+                    for (int jc=0; jc< crnt.getColumn(); jc++){
+                        double tmp = 0.0;
+                        for (int irr=0; irr< crnt.getRow(); irr++){
+                            tmp += crnt.getGrid().get(irr).get(jc);
+                        }
+                        tmp = tmp/ crnt.getRow();
+                        anss.add(tmp);
+                    }
+                    System.out.println("ans = ");
+                    for (int i=0; i< crnt.getRow(); i++){
+                        System.out.print(anss.get(i) + " ");
+                    }
+                    System.out.println("");
+                    continue;
+                }
+
+                else if (mn_ty==3){
+                    Double anss = 0.0;
+
+                    for (int irr=0; irr< crnt.getRow(); irr++){
+                        for (int jc=0; jc< crnt.getColumn(); jc++){
+                            anss += crnt.getGrid().get(irr).get(jc);
+                        }
+                    }
+
+                    anss = anss / ((crnt.getColumn())*(crnt.getRow()));
+
+                    System.out.println("ans = " + anss);
+                }
+
+
+
+            }
+
+            else{
+                System.out.println("Chose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                if(crnt.getColumn()!= crnt.getRow()){
+                    System.out.println("Not a square matrix");
+                    continue;
+                }
+
+
+            }
+
 
 
         }
 
 
-
-
-
-
-
-
-
-
-        //scn.close(); uncomment after completion
-
-
+        scn.close();
 
     }
 
