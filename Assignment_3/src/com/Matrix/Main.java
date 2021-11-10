@@ -2256,14 +2256,35 @@ public class Main {
                 }
 
                 if(crnt.getColumn()!= crnt.getRow()){
-                    System.out.println("Not a square matrix");
+                    System.out.println("Not a correct matrix");
                     continue;
                 }
 
+                if(crnt.getColumn()!= 2){
+                    System.out.println("Not a correct matrix");
+                    continue;
+                }
+
+                Double a = crnt.getGrid().get(0).get(0);
+                Double b = crnt.getGrid().get(0).get(1);
+                Double c = crnt.getGrid().get(1).get(0);
+                Double d = crnt.getGrid().get(1).get(1);
+
+                Double X = a+d;
+                Double D = (a+d)*(a+d) - 4*((a*d) - (b*c));
+                System.out.println("EigenValues are: ");
+                if (D>=0){
+                    Double Dd = Math.pow(D, 0.5);
+                    System.out.println((X+Dd)/2 + " and " + (X-Dd)/2);
+                }
+                else {
+                    Double Dd = Math.pow((-1)*D, 0.5);
+                    System.out.println((X/2) + " + i" + (Dd/2) + " and " + (X/2) + " - i" + (Dd/2));
+                }
+
+                System.out.println("Unable to Compute EigenVectors");
 
             }
-
-
 
         }
 
