@@ -342,7 +342,7 @@ public class Main {
         }
 
         else if (bsc==3){
-            label_types.add(2);
+            label_types.add(3);
             label_types.add(1);
         }
 

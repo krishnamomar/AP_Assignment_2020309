@@ -44,7 +44,7 @@ public class RowMat extends matrix{
         ArrayList<Double> x = new ArrayList<>();
         crnt.add(x);
 
-        for (int i=0; i<row; i++){
+        for (int i=0; i<column; i++){
             crnt.get(0).add(grid.get(i));
         }
 
