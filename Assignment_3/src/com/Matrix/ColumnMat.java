@@ -55,6 +55,6 @@ public class ColumnMat extends matrix{
 
     @Override
     public Integer getMatType(){
-        return 2;
+        return 3;
     }
 }

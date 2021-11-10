@@ -53,6 +53,6 @@ public class RowMat extends matrix{
 
     @Override
     public Integer getMatType(){
-        return 3;
+        return 2;
     }
 }
