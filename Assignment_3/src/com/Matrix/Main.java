@@ -16,7 +16,7 @@ public class Main {
     }
 
     public static Double Give_Random() {
-        List<Double> givenList = Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 0.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0, -1.0);
+        List<Double> givenList = Arrays.asList(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 0.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0, -1.0, 1.0, 2.0, 3.0, 1.0, 4.0);
         Random rand = new Random();
         Double randomElement = givenList.get(rand.nextInt(givenList.size()));
         return randomElement;
@@ -283,6 +283,194 @@ public class Main {
         return Is_Same(chk1, chk2, sz, sz);
     }
 
+    public static ArrayList<Integer> Check_Labels(matrix crnt){
+        ArrayList<Integer> label_types = new ArrayList<>();
+
+        Integer bsc = crnt.getMatType();
+        ArrayList<ArrayList<Double>> grd = crnt.getGrid();
+        Integer rw = crnt.getRow();
+        Integer cl = crnt.getColumn();
+
+        if (bsc==1){
+            label_types.add(1);
+            if (check_upper(grd)){
+                label_types.add(14);
+
+            }
+            if (check_lower(grd)){
+                label_types.add(15);
+            }
+
+        }
+
+        else if (bsc==2){
+            label_types.add(2);
+            label_types.add(1);
+        }
+
+        else if (bsc==3){
+            label_types.add(2);
+            label_types.add(1);
+        }
+
+        else if (bsc==4){
+            label_types.add(4);
+            if (rw==cl){
+                label_types.add(6);
+                if (rw==1){
+                    label_types.add(8);
+                }
+                else{
+                    label_types.add(7);
+                    label_types.add(9);
+                }
+            }
+            else{
+                label_types.add(1);
+                if (cl==1){
+                    label_types.add(2);
+                }
+                if (rw==1){
+                    label_types.add(3);
+                }
+
+            }
+        }
+
+        else if (bsc==5){
+            label_types.add(5);
+            if (rw==cl){
+                label_types.add(6);
+                if (rw==1){
+                    label_types.add(7);
+                    label_types.add(8);
+                }
+                else{
+                    label_types.add(7);
+                    label_types.add(14);
+                    label_types.add(15);
+                    label_types.add(9);
+                }
+            }
+            else{
+                label_types.add(1);
+                if (cl==1){
+                    label_types.add(2);
+                }
+                if (rw==1){
+                    label_types.add(3);
+                }
+            }
+        }
+
+        else if (bsc==6){
+            label_types.add(6);
+            if (check_lower(grd)){
+                label_types.add(15);
+            }
+            if (check_upper(grd)){
+                label_types.add(14);
+            }
+        }
+
+        else if (bsc==7){
+            label_types.add(7);
+            label_types.add(6);
+            if (check_lower(grd)){
+                label_types.add(15);
+            }
+            if (check_upper(grd)){
+                label_types.add(14);
+            }
+        }
+
+        else if (bsc==8){
+            label_types.add(8);
+            label_types.add(6);
+        }
+
+        else if (bsc==9){
+            label_types.add(9);
+            label_types.add(6);
+
+            if (Determinant(grd, rw)==0.0){
+                label_types.add(7);
+            }
+            if (check_lower(grd)){
+                label_types.add(15);
+            }
+            if (check_upper(grd)){
+                label_types.add(14);
+            }
+        }
+
+        else if (bsc==10){
+            label_types.add(10);
+            label_types.add(9);
+            label_types.add(6);
+
+            if (Determinant(grd, rw)==0.0){
+                label_types.add(7);
+            }
+
+            label_types.add(15);
+
+            label_types.add(14);
+
+        }
+
+        else if (bsc==11){
+            label_types.add(10);
+            label_types.add(9);
+            label_types.add(6);
+            label_types.add(11);
+
+            if (Determinant(grd, rw)==0.0){
+                label_types.add(7);
+            }
+
+            label_types.add(15);
+
+            label_types.add(14);
+
+        }
+
+        else if (bsc==12){
+            label_types.add(10);
+            label_types.add(9);
+            label_types.add(6);
+            label_types.add(11);
+            label_types.add(12);
+
+            if (Determinant(grd, rw)==0.0){
+                label_types.add(7);
+            }
+
+            label_types.add(15);
+
+            label_types.add(14);
+
+        }
+
+        else{
+            label_types.add(13);
+            label_types.add(6);
+            if (Determinant(grd, rw)==0.0){
+                label_types.add(7);
+            }
+            if (check_lower(grd)){
+                label_types.add(15);
+            }
+            if (check_upper(grd)){
+                label_types.add(14);
+            }
+        }
+
+
+
+
+        return label_types;
+    }
 
 
 
@@ -977,6 +1165,80 @@ public class Main {
 
 
                 }
+            }
+
+            else if (Opr_Input==4){
+                System.out.println("Chose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                ArrayList<Integer> label_types = Check_Labels(crnt);
+
+                for (int i=0; i< label_types.size(); i++){
+                    Integer xxi = label_types.get(i);
+                    if (xxi==1){
+                        System.out.println("Rectangular Matrx");
+                    }
+                    else if (xxi==2){
+                        System.out.println("Row Matrix");
+                    }
+                    else if (xxi==3){
+                        System.out.println("Column Matrix");
+                    }
+                    else if (xxi==4){
+                        System.out.println("Ones Matrix");
+                    }
+                    else if (xxi==5){
+                        System.out.println("Null Matrix");
+                    }
+                    else if (xxi==6){
+                        System.out.println("Square Matrix");
+                    }
+                    else if (xxi==7){
+                        System.out.println("Singular Matrix");
+                    }
+                    else if (xxi==8){
+                        System.out.println("Singleton Matrix");
+                    }
+                    else if (xxi==9){
+                        System.out.println("Symmetric Matrix");
+                    }
+                    else if (xxi==10){
+                        System.out.println("Diagonal Matrix");
+                    }
+                    else if (xxi==11){
+                        System.out.println("Scalar Matrix");
+                    }
+                    else if (xxi==12){
+                        System.out.println("Identity Matrix");
+                    }
+                    else if (xxi==13){
+                        System.out.println("Skew-Symmetric Matrix");
+                    }
+                    else if (xxi==14){
+                        System.out.println("Upper-Triangular Matrix");
+                    }
+                    else {
+                        System.out.println("Lower-Triangular Matrix");
+                    }
+                }
+
             }
 
         }
