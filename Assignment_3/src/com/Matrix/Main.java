@@ -142,7 +142,7 @@ public class Main {
         Double h = grd.get(2).get(1);
         Double i = grd.get(2).get(2);
 
-        ans.get(0).add(((e*i)-(f*g))/v);
+        ans.get(0).add(((e*i)-(f*h))/v);
         ans.get(0).add(((c*h)-(b*i))/v);
         ans.get(0).add(((b*f)-(c*e))/v);
         ans.get(1).add(((f*g)-(d*i))/v);
@@ -223,6 +223,43 @@ public class Main {
         for (int i=0; i<rw; i++){
             for (int j=0; j<cl; j++){
                 ans.get(i).add(scalar+(grd.get(i).get(j)));
+            }
+        }
+
+        return ans;
+    }
+
+    public static ArrayList<ArrayList<Double>> Element_Multiplication(ArrayList<ArrayList<Double>> Aarr, ArrayList<ArrayList<Double>> Barr, Integer rw, Integer cl){
+        ArrayList<ArrayList<Double>> ans = new ArrayList<>();
+        for (int i=0; i<rw; i++){
+            ArrayList<Double> x = new ArrayList<>();
+            ans.add(x);
+        }
+
+        for (int i=0; i<rw; i++){
+            for (int j=0; j<cl; j++){
+                ans.get(i).add((Aarr.get(i).get(j))*(Barr.get(i).get(j)));
+            }
+        }
+
+        return ans;
+    }
+
+    public static ArrayList<ArrayList<Double>> Element_Division(ArrayList<ArrayList<Double>> Aarr, ArrayList<ArrayList<Double>> Barr, Integer rw, Integer cl){
+        ArrayList<ArrayList<Double>> ans = new ArrayList<>();
+        for (int i=0; i<rw; i++){
+            ArrayList<Double> x = new ArrayList<>();
+            ans.add(x);
+        }
+
+        for (int i=0; i<rw; i++){
+            for (int j=0; j<cl; j++){
+                if (Barr.get(i).get(j)!=0.0) {
+                    ans.get(i).add((Aarr.get(i).get(j))/(Barr.get(i).get(j)));
+                }
+                else{
+                    ans.get(i).add(Double.MAX_VALUE);
+                }
             }
         }
 
@@ -1669,6 +1706,68 @@ public class Main {
                     System.out.println("ans = ");
                     print_matrix(ans, Acrnt.getRow(), Bcrnt.getColumn());
                 }
+            }
+
+            else if (Opr_Input==7){
+                System.out.println("Chose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                ArrayList<ArrayList<Double>> ans = Transpose(crnt.getGrid(), crnt.getRow(), crnt.getColumn());
+                System.out.println("ans = ");
+                print_matrix(ans, crnt.getColumn(), crnt.getRow());
+            }
+
+            else if (Opr_Input==8){
+                System.out.println("Chose a Matrix: ");
+                for (int i=0; i<All_Matrices.size(); i++){
+                    System.out.print(All_Matrices.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String x = scn.readLine();
+                matrix crnt = null;
+
+                for (int i=0; i<All_Matrices.size(); i++){
+                    if (x.equals(All_Matrices.get(i).getName())){
+                        crnt = All_Matrices.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                if (crnt.getColumn()!=crnt.getRow()){
+                    System.out.println("Cannot compute Inverse!!");
+                    continue;
+                }
+
+                if (Determinant(crnt.getGrid(), crnt.getRow())==0.0){
+                    System.out.println("Inverse doesn't exists!!");
+                    continue;
+                }
+
+                ArrayList<ArrayList<Double>> ans = Inverse_Matrix(crnt.getGrid(), crnt.getRow());
+                System.out.println("ans = ");
+                print_matrix(ans, crnt.getColumn(), crnt.getRow());
             }
 
         }
