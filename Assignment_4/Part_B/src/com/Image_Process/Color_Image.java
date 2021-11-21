@@ -4,16 +4,17 @@ import java.lang.*;
 import java.util.ArrayList;
 
 public class Color_Image {
-    private ArrayList<ArrayList<Integer>> matrix;
+    private ArrayList<ArrayList<Integer>> Matrix;
     private Integer Row;
     private Integer Column;
+    private String Name;
 
     public ArrayList<ArrayList<Integer>> getMatrix() {
-        return matrix;
+        return Matrix;
     }
 
     public void setMatrix(ArrayList<ArrayList<Integer>> matrix){
-        this.matrix = matrix;
+        this.Matrix = matrix;
     }
 
     public Integer getColumn() {
@@ -30,5 +31,13 @@ public class Color_Image {
 
     public void setRow(Integer row) {
         this.Row = row;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        this.Name = name;
     }
 }

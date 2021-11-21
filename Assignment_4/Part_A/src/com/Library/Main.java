@@ -32,7 +32,7 @@ public class Main {
             System.out.print("Enter Book Title: ");
             String name = scn.readLine();
             System.out.print("Enter ISBN: ");
-            String Isbn = scn.readLine();
+            Long Isbn = Long.parseLong(scn.readLine());
             System.out.print("Enter Barcode Number: ");
             Long barcode = Long.parseLong(scn.readLine());
 

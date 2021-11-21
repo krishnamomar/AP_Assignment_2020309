@@ -19,7 +19,19 @@ public class Main {
         return inverted;
     }
 
-    public static void main(String[] args) {
-	// write your code here
+    public static void main(String[] args) throws IOException{
+
+        //Database starts
+        ArrayList<Object> All_Images = new ArrayList<>();
+        //Database ends
+        System.out.println("Image Processor Initialized...");
+        System.out.println("=============================================");
+        BufferedReader scn = new BufferedReader(new InputStreamReader(System.in));
+
+        while (true) {
+
+        }
+
+
     }
 }

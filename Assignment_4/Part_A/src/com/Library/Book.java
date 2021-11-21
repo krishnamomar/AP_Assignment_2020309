@@ -5,14 +5,14 @@ import java.util.Objects;
 
 public class Book {
     private String name;
-    private String ISBN_number;
+    private Long ISBN_number;
     private Long Bar_Code;
 
     public void setName(String name){
         this.name = name;
     }
 
-    public void setISBN_number(String ISBN_number) {
+    public void setISBN_number(Long ISBN_number) {
         this.ISBN_number = ISBN_number;
     }
 
@@ -24,7 +24,7 @@ public class Book {
         return Bar_Code;
     }
 
-    public String getISBN_number() {
+    public Long getISBN_number() {
         return ISBN_number;
     }
 
@@ -47,44 +47,22 @@ public class Book {
 
     public boolean isGreater(Book o){
         String n1 = this.name;
-        String is1 = this.ISBN_number;
+        Long is1 = this.ISBN_number;
         Long br1 = this.Bar_Code;
         String n2 = o.getName();
-        String is2 = o.getISBN_number();
+        Long is2 = o.getISBN_number();
         Long br2 = o.getBar_Code();
 
         if (n1.equals(n2)){
-            if (is1.equals(is2)){
+            if (is1==is2){
                 return  (br1>br2);
             }
 
-            return (is1.compareTo(is2)>0);
+            return (is1>is2);
         }
-
 
         return (n1.compareTo(n2)>0);
 
     }
 
-    public boolean isLesser(Book o){
-        if (this.name.compareTo(o.getName())<1){
-            return true;
-        }
-        else if (this.name.compareTo(o.getName())>1){
-            return false;
-        }
-
-        else{
-            if (this.ISBN_number.compareTo(o.getISBN_number())<1){
-                return true;
-            }
-            else if (this.ISBN_number.compareTo(o.getISBN_number())>1){
-                return false;
-            }
-
-            else{
-                return (this.Bar_Code < o.getBar_Code());
-            }
-        }
-    }
 }
