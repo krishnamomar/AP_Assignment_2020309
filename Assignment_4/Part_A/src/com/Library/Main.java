@@ -63,7 +63,7 @@ public class Main {
         for (int i=1; i<=K; i++){
             System.out.print("Rack " + i + ": | ");
             for (int j=0; j<X; j++){
-                System.out.print(the_rack.get(str+j).getName() + " | ");
+                System.out.print(the_rack.get(str+j).getName() + " ISBN: " + the_rack.get(str+j).getISBN_number() + " Barcode: " + the_rack.get(str+j).getBar_Code() + " | ");
             }
             System.out.println("");
             str += X;
