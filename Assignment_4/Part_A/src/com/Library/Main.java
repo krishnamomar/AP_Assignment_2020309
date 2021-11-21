@@ -46,15 +46,15 @@ public class Main {
         }
 
         System.out.println("");
-        System.out.println("Sorting The Rack, Please StandBy!");
+        System.out.println("Sorting The Racks, Please StandBy!");
         System.out.println("");
 
         Book_Rack.Sort_();
 
-        System.out.println("Rack has Been Sorted");
+        System.out.println("Racks has Been Sorted");
         System.out.println("=============================================");
 
-        System.out.println("Showing the Rack: ");
+        System.out.println("Showing the Racks: ");
 
         ArrayList<Book> the_rack = Book_Rack.getRacks();
 
