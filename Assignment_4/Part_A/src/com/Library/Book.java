@@ -44,4 +44,48 @@ public class Book {
     public int hashCode() {
         return Objects.hash(name, ISBN_number, Bar_Code);
     }
+
+    public boolean isGreater(Book o){
+        if (this.name.compareTo(o.getName())>1){
+            return true;
+        }
+        else if (this.name.compareTo(o.getName())<1){
+            return false;
+        }
+
+        else{
+            if (this.ISBN_number.compareTo(o.getISBN_number())>1){
+                return true;
+            }
+            else if (this.ISBN_number.compareTo(o.getISBN_number())<1){
+                return false;
+            }
+
+            else{
+                return (this.Bar_Code > o.getBar_Code());
+            }
+        }
+    }
+
+    public boolean isLesser(Book o){
+        if (this.name.compareTo(o.getName())<1){
+            return true;
+        }
+        else if (this.name.compareTo(o.getName())>1){
+            return false;
+        }
+
+        else{
+            if (this.ISBN_number.compareTo(o.getISBN_number())<1){
+                return true;
+            }
+            else if (this.ISBN_number.compareTo(o.getISBN_number())>1){
+                return false;
+            }
+
+            else{
+                return (this.Bar_Code < o.getBar_Code());
+            }
+        }
+    }
 }
