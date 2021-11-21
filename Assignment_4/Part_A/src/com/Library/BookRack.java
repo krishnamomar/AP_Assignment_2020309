@@ -39,4 +39,8 @@ public class BookRack <T>{
             //Collections.sort(this.Racks);
         }
     }
+
+    public ArrayList<T> getRacks(){
+        return Racks;
+    }
 }
