@@ -70,7 +70,7 @@ public class Main {
         }
 
         if (N%K!=0){
-            System.out.print("Books with no slot: | ");
+            System.out.print("Unplaced Books: | ");
             for (int j=str; j< the_rack.size(); j++){
                 System.out.print(the_rack.get(j).getName() + " ISBN: " + the_rack.get(j).getISBN_number() + " Barcode: " + the_rack.get(j).getBar_Code() + " | ");
             }

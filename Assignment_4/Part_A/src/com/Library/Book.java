@@ -46,25 +46,24 @@ public class Book {
     }
 
     public boolean isGreater(Book o){
-        if (this.name.compareTo(o.getName())>1){
-            return true;
-        }
-        else if (this.name.compareTo(o.getName())<1){
-            return false;
-        }
+        String n1 = this.name;
+        String is1 = this.ISBN_number;
+        Long br1 = this.Bar_Code;
+        String n2 = o.getName();
+        String is2 = o.getISBN_number();
+        Long br2 = o.getBar_Code();
 
-        else{
-            if (this.ISBN_number.compareTo(o.getISBN_number())>1){
-                return true;
-            }
-            else if (this.ISBN_number.compareTo(o.getISBN_number())<1){
-                return false;
+        if (n1.equals(n2)){
+            if (is1.equals(is2)){
+                return  (br1>br2);
             }
 
-            else{
-                return (this.Bar_Code > o.getBar_Code());
-            }
+            return (is1.compareTo(is2)>0);
         }
+
+
+        return (n1.compareTo(n2)>0);
+
     }
 
     public boolean isLesser(Book o){
