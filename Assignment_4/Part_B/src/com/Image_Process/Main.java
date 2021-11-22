@@ -110,7 +110,7 @@ public class Main {
                 }
 
                 else if (inp2==1){
-                    System.out.print("Enter Size of Matrix (Row Colimn): ");
+                    System.out.print("Enter Size of Image (Row Colimn): ");
                     String[] rwcl = scn.readLine().split(" ");
                     Integer row = Integer.parseInt(rwcl[0]);
                     Integer column = Integer.parseInt(rwcl[1]);
@@ -186,7 +186,7 @@ public class Main {
                 }
 
                 else if (inp2==2){
-                    System.out.print("Enter Size of Matrix (Row Colimn): ");
+                    System.out.print("Enter Size of Image (Row Colimn): ");
                     String[] rwcl = scn.readLine().split(" ");
                     Integer row = Integer.parseInt(rwcl[0]);
                     Integer column = Integer.parseInt(rwcl[1]);
@@ -199,6 +199,132 @@ public class Main {
 
                         for (int j=0; j<column; j++){
                             x.add((Integer.parseInt(ln1[j]))%226);
+                        }
+
+                        gray_mat.add(x);
+                    }
+
+                    BW_Image crnt_img = new BW_Image();
+                    crnt_img.setRow(row);
+                    crnt_img.setColumn(column);
+                    crnt_img.setMatrix(gray_mat);
+
+                    char nm_ch = (char)ascii_name;
+                    String name = Character.toString(nm_ch);
+                    ascii_name++;
+                    crnt_img.setName(name);
+
+                    All_Images.add(crnt_img);
+
+                    Image_Printer_BW(crnt_img.getMatrix(), crnt_img.getRow(), crnt_img.getColumn(), crnt_img.getName());
+                    System.out.println("");
+                    continue;
+                }
+
+            }
+
+            else if (INP1==2){
+                System.out.println("Enter Image Type: ");
+                System.out.println("1. Coloured");
+                System.out.println("2. Grayscale");
+                Integer inp2 = Integer.parseInt(scn.readLine());
+                if (inp2>2 || inp2<1){
+                    System.out.println("Invalid Input!!");
+                    continue;
+                }
+
+                else if (inp2==1){
+                    System.out.print("Enter Size of Image (Row Colimn): ");
+                    String[] rwcl = scn.readLine().split(" ");
+                    Integer row = Integer.parseInt(rwcl[0]);
+                    Integer column = Integer.parseInt(rwcl[1]);
+                    System.out.println("Creating Default Image");
+
+                    ArrayList<ArrayList<Integer>> red_mat = new ArrayList<>();
+                    //System.out.println("Enter the Red Matrix (0-255, else will be adjusted accordingly): ");
+                    for (int i=0; i<row; i++){
+                        ArrayList<Integer> x = new ArrayList<>();
+                        //String[] ln1 = scn.readLine().split(" ");
+
+                        for (int j=0; j<column; j++){
+                            x.add(0);
+                        }
+
+                        red_mat.add(x);
+                    }
+
+                    ArrayList<ArrayList<Integer>> green_mat = new ArrayList<>();
+                    //System.out.println("Enter the Green Matrix(0-255, else will be adjusted accordingly): ");
+                    for (int i=0; i<row; i++){
+                        ArrayList<Integer> x = new ArrayList<>();
+                        //String[] ln1 = scn.readLine().split(" ");
+
+                        for (int j=0; j<column; j++){
+                            x.add(0);
+                        }
+
+                        green_mat.add(x);
+                    }
+
+                    ArrayList<ArrayList<Integer>> blue_mat = new ArrayList<>();
+                    //System.out.println("Enter the Blue Matrix(0-255, else will be adjusted accordingly): ");
+                    for (int i=0; i<row; i++){
+                        ArrayList<Integer> x = new ArrayList<>();
+                        //String[] ln1 = scn.readLine().split(" ");
+
+                        for (int j=0; j<column; j++){
+                            x.add(0);
+                        }
+
+                        blue_mat.add(x);
+                    }
+
+                    ArrayList<ArrayList<ArrayList<Integer>>> matrix = new ArrayList<>();
+                    for (int i=0; i<row; i++){
+                        ArrayList<ArrayList<Integer>> x = new ArrayList<>();
+                        for (int j=0; j<column; j++){
+                            ArrayList<Integer> z = new ArrayList<>();
+                            z.add(red_mat.get(i).get(j));
+                            z.add(green_mat.get(i).get(j));
+                            z.add(blue_mat.get(i).get(j));
+                            x.add(z);
+                        }
+                        matrix.add(x);
+                    }
+
+                    Color_Image crnt_img = new Color_Image();
+                    crnt_img.setRow(row);
+                    crnt_img.setColumn(column);
+                    crnt_img.setMatrix(matrix);
+
+                    char nm_ch = (char)ascii_name;
+                    String name = Character.toString(nm_ch);
+                    ascii_name++;
+                    crnt_img.setName(name);
+
+                    All_Images.add(crnt_img);
+
+                    Image_Printer_CL(crnt_img.getMatrix(), crnt_img.getRow(), crnt_img.getColumn(), crnt_img.getName());
+                    System.out.println("");
+                    continue;
+
+                }
+
+                else if (inp2==2){
+                    System.out.print("Enter Size of Image (Row Colimn): ");
+                    String[] rwcl = scn.readLine().split(" ");
+                    Integer row = Integer.parseInt(rwcl[0]);
+                    Integer column = Integer.parseInt(rwcl[1]);
+                    System.out.println("Creating Default Image");
+
+                    ArrayList<ArrayList<Integer>> gray_mat = new ArrayList<>();
+                    //System.out.println("Enter the Grayscale Matrix(0-255, else will be adjusted accordingly): ");
+                    for (int i=0; i<row; i++){
+                        ArrayList<Integer> x = new ArrayList<>();
+                        //String[] ln1 = scn.readLine().split(" ");
+
+                        for (int j=0; j<column; j++){
+                            x.add(0);
                         }
 
                         gray_mat.add(x);
