@@ -554,10 +554,7 @@ public class Main {
 
         }
 
-
-
-        //scn.close();
-
+        scn.close();
 
     }
 }
