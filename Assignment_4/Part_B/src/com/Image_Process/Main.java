@@ -122,7 +122,7 @@ public class Main {
                         String[] ln1 = scn.readLine().split(" ");
 
                         for (int j=0; j<column; j++){
-                            x.add((Integer.parseInt(ln1[j]))%226);
+                            x.add(Math.abs((Integer.parseInt(ln1[j]))%226));
                         }
 
                         red_mat.add(x);
@@ -135,7 +135,7 @@ public class Main {
                         String[] ln1 = scn.readLine().split(" ");
 
                         for (int j=0; j<column; j++){
-                            x.add((Integer.parseInt(ln1[j]))%226);
+                            x.add(Math.abs((Integer.parseInt(ln1[j]))%226));
                         }
 
                         green_mat.add(x);
@@ -148,7 +148,7 @@ public class Main {
                         String[] ln1 = scn.readLine().split(" ");
 
                         for (int j=0; j<column; j++){
-                            x.add((Integer.parseInt(ln1[j]))%226);
+                            x.add(Math.abs((Integer.parseInt(ln1[j]))%226));
                         }
 
                         blue_mat.add(x);
@@ -198,7 +198,7 @@ public class Main {
                         String[] ln1 = scn.readLine().split(" ");
 
                         for (int j=0; j<column; j++){
-                            x.add((Integer.parseInt(ln1[j]))%226);
+                            x.add(Math.abs((Integer.parseInt(ln1[j]))%226));
                         }
 
                         gray_mat.add(x);
@@ -381,7 +381,7 @@ public class Main {
                         String[] ln1 = scn.readLine().split(" ");
 
                         for (int j=0; j<column; j++){
-                            x.add((Integer.parseInt(ln1[j]))%226);
+                            x.add(Math.abs((Integer.parseInt(ln1[j]))%226));
                         }
 
                         red_mat.add(x);
@@ -394,7 +394,7 @@ public class Main {
                         String[] ln1 = scn.readLine().split(" ");
 
                         for (int j=0; j<column; j++){
-                            x.add((Integer.parseInt(ln1[j]))%226);
+                            x.add(Math.abs((Integer.parseInt(ln1[j]))%226));
                         }
 
                         green_mat.add(x);
@@ -407,7 +407,7 @@ public class Main {
                         String[] ln1 = scn.readLine().split(" ");
 
                         for (int j=0; j<column; j++){
-                            x.add((Integer.parseInt(ln1[j]))%226);
+                            x.add(Math.abs((Integer.parseInt(ln1[j]))%226));
                         }
 
                         blue_mat.add(x);
@@ -445,7 +445,7 @@ public class Main {
                         String[] ln1 = scn.readLine().split(" ");
 
                         for (int j=0; j<column; j++){
-                            x.add((Integer.parseInt(ln1[j]))%226);
+                            x.add(Math.abs((Integer.parseInt(ln1[j]))%226));
                         }
 
                         gray_mat.add(x);
