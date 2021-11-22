@@ -110,7 +110,7 @@ public class Main {
                 }
 
                 else if (inp2==1){
-                    System.out.print("Enter Size of Image (Row Colimn): ");
+                    System.out.print("Enter Size of Image (Row Column): ");
                     String[] rwcl = scn.readLine().split(" ");
                     Integer row = Integer.parseInt(rwcl[0]);
                     Integer column = Integer.parseInt(rwcl[1]);
@@ -186,7 +186,7 @@ public class Main {
                 }
 
                 else if (inp2==2){
-                    System.out.print("Enter Size of Image (Row Colimn): ");
+                    System.out.print("Enter Size of Image (Row Column): ");
                     String[] rwcl = scn.readLine().split(" ");
                     Integer row = Integer.parseInt(rwcl[0]);
                     Integer column = Integer.parseInt(rwcl[1]);
@@ -234,7 +234,7 @@ public class Main {
                 }
 
                 else if (inp2==1){
-                    System.out.print("Enter Size of Image (Row Colimn): ");
+                    System.out.print("Enter Size of Image (Row Column): ");
                     String[] rwcl = scn.readLine().split(" ");
                     Integer row = Integer.parseInt(rwcl[0]);
                     Integer column = Integer.parseInt(rwcl[1]);
@@ -311,7 +311,7 @@ public class Main {
                 }
 
                 else if (inp2==2){
-                    System.out.print("Enter Size of Image (Row Colimn): ");
+                    System.out.print("Enter Size of Image (Row Column): ");
                     String[] rwcl = scn.readLine().split(" ");
                     Integer row = Integer.parseInt(rwcl[0]);
                     Integer column = Integer.parseInt(rwcl[1]);
