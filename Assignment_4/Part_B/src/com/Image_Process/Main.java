@@ -509,6 +509,49 @@ public class Main {
 
             }
 
+            else {
+                System.out.println("Chose an Image: ");
+                for (int i=0; i<All_Images.size(); i++){
+                    System.out.print(All_Images.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String xname = scn.readLine();
+                Image crnt_img = null;
+
+                for (int i=0; i<All_Images.size(); i++){
+                    if (xname.equals(All_Images.get(i).getName())){
+                        crnt_img = All_Images.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt_img == null){
+                    System.out.println("No such image with given Name!!");
+                    continue;
+                }
+
+                if (crnt_img instanceof Color_Image){
+                    ArrayList<ArrayList<ArrayList<Integer>>> imgct = Compute_Inverse_CL(((Color_Image) crnt_img).getMatrix(), crnt_img.getRow(), crnt_img.getColumn());
+                    Image_Printer_CL(imgct, crnt_img.getRow(), crnt_img.getColumn(), crnt_img.getName());
+                    System.out.println("");
+                    continue;
+                }
+
+                else if (crnt_img instanceof BW_Image){
+                    ArrayList<ArrayList<Integer>> imgct = Compute_Inverse_BW(((BW_Image) crnt_img).getMatrix(), crnt_img.getRow(), crnt_img.getColumn());
+                    Image_Printer_BW(imgct, crnt_img.getRow(), crnt_img.getColumn(), crnt_img.getName());
+                    System.out.println("");
+                    continue;
+                }
+
+                else {
+                    System.out.println("Instance Error ");
+                    continue;
+                }
+
+
+            }
+
         }
 
 
