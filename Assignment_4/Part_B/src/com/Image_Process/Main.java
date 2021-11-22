@@ -350,6 +350,121 @@ public class Main {
             }
 
             else if (INP1==3){
+                System.out.println("Chose an Image: ");
+                for (int i=0; i<All_Images.size(); i++){
+                    System.out.print(All_Images.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String xname = scn.readLine();
+                Image crnt_img = null;
+
+                for (int i=0; i<All_Images.size(); i++){
+                    if (xname.equals(All_Images.get(i).getName())){
+                        crnt_img = All_Images.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt_img == null){
+                    System.out.println("No such matrix with given Name!!");
+                    continue;
+                }
+
+                if (crnt_img instanceof Color_Image){
+                    Integer row = crnt_img.getRow();
+                    Integer column = crnt_img.getColumn();
+
+                    ArrayList<ArrayList<Integer>> red_mat = new ArrayList<>();
+                    System.out.println("Enter the Red Matrix (0-255, else will be adjusted accordingly): ");
+                    for (int i=0; i<row; i++){
+                        ArrayList<Integer> x = new ArrayList<>();
+                        String[] ln1 = scn.readLine().split(" ");
+
+                        for (int j=0; j<column; j++){
+                            x.add((Integer.parseInt(ln1[j]))%226);
+                        }
+
+                        red_mat.add(x);
+                    }
+
+                    ArrayList<ArrayList<Integer>> green_mat = new ArrayList<>();
+                    System.out.println("Enter the Green Matrix(0-255, else will be adjusted accordingly): ");
+                    for (int i=0; i<row; i++){
+                        ArrayList<Integer> x = new ArrayList<>();
+                        String[] ln1 = scn.readLine().split(" ");
+
+                        for (int j=0; j<column; j++){
+                            x.add((Integer.parseInt(ln1[j]))%226);
+                        }
+
+                        green_mat.add(x);
+                    }
+
+                    ArrayList<ArrayList<Integer>> blue_mat = new ArrayList<>();
+                    System.out.println("Enter the Blue Matrix(0-255, else will be adjusted accordingly): ");
+                    for (int i=0; i<row; i++){
+                        ArrayList<Integer> x = new ArrayList<>();
+                        String[] ln1 = scn.readLine().split(" ");
+
+                        for (int j=0; j<column; j++){
+                            x.add((Integer.parseInt(ln1[j]))%226);
+                        }
+
+                        blue_mat.add(x);
+                    }
+
+                    ArrayList<ArrayList<ArrayList<Integer>>> matrix = new ArrayList<>();
+                    for (int i=0; i<row; i++){
+                        ArrayList<ArrayList<Integer>> x = new ArrayList<>();
+                        for (int j=0; j<column; j++){
+                            ArrayList<Integer> z = new ArrayList<>();
+                            z.add(red_mat.get(i).get(j));
+                            z.add(green_mat.get(i).get(j));
+                            z.add(blue_mat.get(i).get(j));
+                            x.add(z);
+                        }
+                        matrix.add(x);
+                    }
+
+                    ((Color_Image) crnt_img).setMatrix(matrix);
+
+                    Image_Printer_CL(((Color_Image) crnt_img).getMatrix(), crnt_img.getRow(), crnt_img.getColumn(), crnt_img.getName());
+                    System.out.println("");
+                    continue;
+
+                }
+
+                else if (crnt_img instanceof BW_Image){
+                    Integer row = crnt_img.getRow();
+                    Integer column = crnt_img.getColumn();
+
+                    ArrayList<ArrayList<Integer>> gray_mat = new ArrayList<>();
+                    System.out.println("Enter the Grayscale Matrix (0-255, else will be adjusted accordingly): ");
+                    for (int i=0; i<row; i++){
+                        ArrayList<Integer> x = new ArrayList<>();
+                        String[] ln1 = scn.readLine().split(" ");
+
+                        for (int j=0; j<column; j++){
+                            x.add((Integer.parseInt(ln1[j]))%226);
+                        }
+
+                        gray_mat.add(x);
+                    }
+
+
+                    ((BW_Image) crnt_img).setMatrix(gray_mat);
+
+                    Image_Printer_BW(((BW_Image) crnt_img).getMatrix(), crnt_img.getRow(), crnt_img.getColumn(), crnt_img.getName());
+                    System.out.println("");
+                    continue;
+
+                }
+
+                else {
+                    System.out.println("Instance Error ");
+                    continue;
+                }
+
 
             }
 
