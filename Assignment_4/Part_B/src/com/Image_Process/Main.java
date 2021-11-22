@@ -366,7 +366,7 @@ public class Main {
                 }
 
                 if (crnt_img == null){
-                    System.out.println("No such matrix with given Name!!");
+                    System.out.println("No such image with given Name!!");
                     continue;
                 }
 
@@ -458,6 +458,47 @@ public class Main {
                     System.out.println("");
                     continue;
 
+                }
+
+                else {
+                    System.out.println("Instance Error ");
+                    continue;
+                }
+
+
+            }
+
+            else if (INP1==4){
+                System.out.println("Chose an Image: ");
+                for (int i=0; i<All_Images.size(); i++){
+                    System.out.print(All_Images.get(i).getName() + " ");
+                }
+                System.out.println("");
+                String xname = scn.readLine();
+                Image crnt_img = null;
+
+                for (int i=0; i<All_Images.size(); i++){
+                    if (xname.equals(All_Images.get(i).getName())){
+                        crnt_img = All_Images.get(i);
+                        break;
+                    }
+                }
+
+                if (crnt_img == null){
+                    System.out.println("No such image with given Name!!");
+                    continue;
+                }
+
+                if (crnt_img instanceof Color_Image){
+                    Image_Printer_CL(((Color_Image) crnt_img).getMatrix(), crnt_img.getRow(), crnt_img.getColumn(), crnt_img.getName());
+                    System.out.println("");
+                    continue;
+                }
+
+                else if (crnt_img instanceof BW_Image){
+                    Image_Printer_BW(((BW_Image) crnt_img).getMatrix(), crnt_img.getRow(), crnt_img.getColumn(), crnt_img.getName());
+                    System.out.println("");
+                    continue;
                 }
 
                 else {
