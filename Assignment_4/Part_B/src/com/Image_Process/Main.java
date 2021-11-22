@@ -69,7 +69,7 @@ public class Main {
     public static void main(String[] args) throws IOException{
 
         //Database starts
-        ArrayList<Object> All_Images = new ArrayList<>();
+        ArrayList<Image> All_Images = new ArrayList<>();
         int ascii_name = 97;
         //Database ends
         System.out.println("Image Processor Initialized...");
@@ -346,6 +346,10 @@ public class Main {
                     System.out.println("");
                     continue;
                 }
+
+            }
+
+            else if (INP1==3){
 
             }
 
