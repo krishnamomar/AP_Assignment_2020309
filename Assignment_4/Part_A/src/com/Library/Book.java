@@ -54,11 +54,11 @@ public class Book {
         Long br2 = o.getBar_Code();
 
         if (n1.equals(n2)){
-            if (is1==is2){
-                return  (br1>br2);
+            if (is1.equals(is2)){
+                return  (((long) br1) > ((long) br2));
             }
 
-            return (is1>is2);
+            return (((long) is1) > ((long) is2));
         }
 
         return (n1.compareTo(n2)>0);
