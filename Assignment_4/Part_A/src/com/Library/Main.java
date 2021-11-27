@@ -6,6 +6,15 @@ import java.util.ArrayList;
 
 public class Main {
 
+    public static boolean IsContaining(ArrayList<Long> a, Long x){
+        for (int i=0; i<a.size(); i++){
+            if (x.equals(a.get(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) throws IOException{
 	// write your code here
 
@@ -15,6 +24,7 @@ public class Main {
         System.out.println("");
 
         BookRack<Book> Book_Rack = new BookRack<>();
+        ArrayList<Long> All_Barcodes = new ArrayList<>();
 
         System.out.println("Enter the Number of Books (N) and Number of Racks (K) : ");
         System.out.println("*note: N should be perfectly devisible by K else last few books will have no slot left to be placed");
@@ -35,6 +45,14 @@ public class Main {
             Long Isbn = Long.parseLong(scn.readLine());
             System.out.print("Enter Barcode Number: ");
             Long barcode = Long.parseLong(scn.readLine());
+
+            if (!IsContaining(All_Barcodes, barcode)){
+                System.out.println("Barcode already exists!!");
+                i--;
+                continue;
+            }
+
+            All_Barcodes.add(barcode);
 
             Book bko = new Book();
             bko.setName(name);
